@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Briefcase, Gauge, Code2, Bot, Landmark, Wrench, ArrowRight } from "lucide-react";
+import { Briefcase, Gauge, Code2, Bot, Landmark, Wrench, Megaphone, ArrowRight } from "lucide-react";
 
 import { tools } from "@/lib/tools-registry";
 import { categoryLabels, type ToolCategory } from "@/types/tool";
@@ -11,6 +11,7 @@ const categoryIcons: Record<ToolCategory, typeof Briefcase> = {
   ai: Bot,
   finance: Landmark,
   utility: Wrench,
+   marketing: Megaphone,
 };
 
 const categoryCopy: Record<ToolCategory, string> = {
@@ -20,6 +21,7 @@ const categoryCopy: Record<ToolCategory, string> = {
   ai: "AI-assisted tools for writing and thinking faster.",
   finance: "Invoices, rates, and calculators that handle the math.",
   utility: "General-purpose tools for whatever comes up.",
+  marketing: "SEO and content tools for growing traffic that converts.",
 };
 
 export function CategoriesGrid() {
@@ -34,7 +36,7 @@ export function CategoriesGrid() {
               Browse by category
             </h2>
             <p className="mt-2 text-muted-foreground">
-              Six categories today, all growing toward 100+ tools.
+              Seven categories today, all growing toward 100+ tools.
             </p>
           </div>
           <Link

@@ -1,4 +1,4 @@
-import { CalendarClock, FileText, Calculator } from "lucide-react";
+import { CalendarClock, FileText, Calculator, Timer, Search  } from "lucide-react";
 
 import type { Tool } from "@/types/tool";
 
@@ -150,6 +150,98 @@ export const tools: Tool[] = [
         question: "Does it account for taxes?",
         answer:
           "Add your estimated tax rate as part of your expenses or profit margin — the calculator gives you the gross rate to charge; what you keep after tax depends on your local tax rules.",
+      },
+    ],
+  },
+  {
+    slug: "meeting-cost-ticker",
+    name: "Remote Meeting Cost Ticker",
+    tagline: "Watch what this meeting is actually costing, in real time.",
+    description:
+      "Enter how many people are in a meeting and their average hourly wage, then start the ticker — a live counter shows exactly how much the meeting is costing as it runs, so everyone feels the value of the time being spent.",
+    category: "business",
+    icon: Timer,
+    isNew: true,
+    keywords: [
+      "meeting cost calculator",
+      "meeting cost ticker",
+      "meeting cost counter",
+      "how much does this meeting cost",
+      "remote meeting cost",
+      "team meeting cost calculator",
+    ],
+    howTo: [
+      "Enter how many people are in the meeting.",
+      "Enter an average hourly wage across attendees — a rough blended estimate is fine.",
+      "Click \"Start meeting\" right when the meeting begins to start the live counter.",
+      "Pause or reset any time, and copy a summary once the meeting wraps up.",
+    ],
+    faq: [
+      {
+        question: "How is the cost calculated?",
+        answer:
+          "It multiplies the number of attendees by the average hourly wage to get a combined per-hour burn rate, then scales that down to whatever fraction of an hour has elapsed since you hit start.",
+      },
+      {
+        question: "Can I adjust the numbers while the meeting is running?",
+        answer:
+          "Yes. If someone joins late or leaves early, update the attendee count or wage at any point and the running total adjusts immediately.",
+      },
+      {
+        question: "Where do I get an average hourly wage for the group?",
+        answer:
+          "A quick blended estimate works well — take a rough average salary for the roles in the room, divide by roughly 2,080 working hours a year, and use that number.",
+      },
+      {
+        question: "Does pausing reset the counter?",
+        answer:
+          "No. Pause freezes the total exactly where it is so you can screenshot or copy it, and \"Resume\" picks back up from that point. Only \"Reset\" clears it to zero.",
+      },
+    ],
+  },
+  {
+    slug: "serp-simulator",
+    name: "Google SERP & AI Overview Snippet Simulator",
+    tagline: "Preview your title and description before you publish.",
+    description:
+      "Type your meta title and description and see a live preview of how they'll likely display on desktop and mobile search results, complete with character-limit warnings and a simulated AI Overview snippet, so you can catch truncation and weak copy before it goes live.",
+    category: "marketing",
+    icon: Search,
+    isNew: true,
+    keywords: [
+      "serp preview tool",
+      "meta description checker",
+      "title tag checker",
+      "google snippet preview",
+      "ai overview simulator",
+      "seo snippet generator",
+    ],
+    howTo: [
+      "Enter your meta title and watch the character counter — green means safely under Google's typical truncation point.",
+      "Enter your meta description and check it against the same limit.",
+      "Add your page URL to see the breadcrumb path Google would display.",
+      "Switch between the Desktop and Mobile tabs to compare how the snippet wraps on each.",
+    ],
+    faq: [
+      {
+        question: "Are these the exact pixel widths Google uses?",
+        answer:
+          "They're a close, widely-used approximation based on typical Google SERP container widths and fonts. Google's actual rendering can shift slightly over time and varies by query, so treat this as a strong guide rather than a guarantee.",
+      },
+      {
+        question: "What counts as too long for a title or description?",
+        answer:
+          "As a rule of thumb, titles start risking truncation past about 55–60 characters, and descriptions past about 150–160 characters — the counter turns amber near that point and red once you're over it.",
+      },
+      {
+        question: "What is the \"Simulated AI Overview\" section?",
+        answer:
+          "It's a stylized preview of how your content might be quoted in an AI-generated answer box, built from your description. It's meant to help you sanity-check tone and clarity — it doesn't predict what Google's AI Overview will actually generate.",
+      },
+      {
+        question: "Do I need to enter a real URL?",
+        answer:
+          "No — any URL works to preview the breadcrumb path. Just make sure it reflects your real site structure if you want an accurate picture before publishing.",
       },
     ],
   },
