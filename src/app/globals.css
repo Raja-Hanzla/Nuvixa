@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Paper — cool off-white, not cream */
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Signal blue — primary accent */
+    --primary: 231 100% 62%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 25% 95%;
+    --secondary-foreground: 222 47% 15%;
+
+    --muted: 210 20% 94%;
+    --muted-foreground: 220 12% 42%;
+
+    --accent: 210 25% 95%;
+    --accent-foreground: 231 100% 45%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 20% 89%;
+    --input: 214 20% 89%;
+    --ring: 231 100% 62%;
+
+    /* Signature accents */
+    --signal: 231 100% 62%;
+    --signal-foreground: 0 0% 100%;
+    --spark: 38 100% 56%;
+    --success: 152 60% 38%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Ink — deep blue-black, not pure black */
+    --background: 222 46% 7%;
+    --foreground: 210 25% 96%;
+
+    --card: 222 40% 10%;
+    --card-foreground: 210 25% 96%;
+
+    --popover: 222 40% 9%;
+    --popover-foreground: 210 25% 96%;
+
+    --primary: 231 100% 68%;
+    --primary-foreground: 222 47% 8%;
+
+    --secondary: 222 30% 15%;
+    --secondary-foreground: 210 25% 96%;
+
+    --muted: 222 28% 15%;
+    --muted-foreground: 216 12% 65%;
+
+    --accent: 222 30% 16%;
+    --accent-foreground: 231 100% 78%;
+
+    --destructive: 0 68% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 24% 19%;
+    --input: 222 24% 19%;
+    --ring: 231 100% 68%;
+
+    --signal: 231 100% 68%;
+    --signal-foreground: 222 47% 8%;
+    --spark: 38 100% 60%;
+    --success: 152 55% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image: linear-gradient(hsl(var(--border) / 0.6) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.6) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .mono-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
