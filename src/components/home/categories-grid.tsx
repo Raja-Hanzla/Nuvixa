@@ -10,8 +10,8 @@ const categoryIcons: Record<ToolCategory, typeof Briefcase> = {
   developer: Code2,
   ai: Bot,
   finance: Landmark,
+  marketing: Megaphone,
   utility: Wrench,
-   marketing: Megaphone,
 };
 
 const categoryCopy: Record<ToolCategory, string> = {
@@ -20,8 +20,8 @@ const categoryCopy: Record<ToolCategory, string> = {
   developer: "Formatters, converters, and generators for builders.",
   ai: "AI-assisted tools for writing and thinking faster.",
   finance: "Invoices, rates, and calculators that handle the math.",
-  utility: "General-purpose tools for whatever comes up.",
   marketing: "SEO and content tools for growing traffic that converts.",
+  utility: "General-purpose tools for whatever comes up.",
 };
 
 export function CategoriesGrid() {

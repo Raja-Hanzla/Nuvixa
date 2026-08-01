@@ -143,7 +143,11 @@ export function SerpSimulatorTool() {
                 >
                   {title || "Your meta title will appear here"}
                 </p>
-                <p className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+                <p
+                  className={cn(
+                    "line-clamp-2 text-sm leading-relaxed text-muted-foreground"
+                  )}
+                >
                   {description || "Your meta description will appear here, wrapped as Google typically shows it."}
                 </p>
               </div>

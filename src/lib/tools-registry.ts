@@ -1,4 +1,4 @@
-import { CalendarClock, FileText, Calculator, Timer, Search  } from "lucide-react";
+import { CalendarClock, FileText, Calculator, Timer, Search } from "lucide-react";
 
 import type { Tool } from "@/types/tool";
 
@@ -19,7 +19,6 @@ export const tools: Tool[] = [
       "Generate a clear, professional out-of-office email for vacation, sick leave, parental leave, conferences, or any time away — with a tone that fits your workplace and the right details for whoever emails you while you're gone.",
     category: "business",
     icon: CalendarClock,
-    isNew: true,
     keywords: [
       "out of office",
       "ooo",
@@ -65,7 +64,6 @@ export const tools: Tool[] = [
       "Build a professional invoice or receipt with itemized line items, automatic tax and discount calculations, and a clean layout — then export it as a ready-to-send PDF in seconds.",
     category: "finance",
     icon: FileText,
-    isNew: true,
     keywords: [
       "invoice generator",
       "invoice maker",

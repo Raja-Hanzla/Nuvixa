@@ -6,7 +6,7 @@ export type ToolCategory =
   | "developer"
   | "ai"
   | "finance"
-  | "marketing" 
+  | "marketing"
   | "utility";
 
 export interface FaqItem {
@@ -40,8 +40,8 @@ export const categoryLabels: Record<ToolCategory, string> = {
   developer: "Developer",
   ai: "AI",
   finance: "Finance",
-  utility: "Utility",
   marketing: "Marketing",
+  utility: "Utility",
 };
 
 /** One accent dot color per category — used instead of numbering, since categories aren't a sequence. */
@@ -51,6 +51,6 @@ export const categoryDot: Record<ToolCategory, string> = {
   developer: "bg-violet-500",
   ai: "bg-spark",
   finance: "bg-emerald-500",
-  utility: "bg-sky-500",
   marketing: "bg-rose-500",
+  utility: "bg-sky-500",
 };
