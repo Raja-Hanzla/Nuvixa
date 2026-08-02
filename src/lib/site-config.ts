@@ -3,12 +3,10 @@ export const siteConfig = {
   tagline: "Free tools for work, done well",
   description:
     "Nuvixa is a free toolkit of fast, beautiful business, productivity, developer, AI, finance, and utility tools — no sign-up, no clutter, just tools that work.",
-  url: "https://nuvixa.com",
+  url: "https://nuvixa-sigma.vercel.app",
   ogImage: "/og-image.png",
-  links: {
-    twitter: "https://twitter.com/nuvixa",
-    github: "https://github.com/nuvixa",
-  },
+  // TODO: replace with a real inbox you check before launching — this is a placeholder.
+  email: "honeykhalid2010@gmail.com",
   keywords: [
     "free online tools",
     "business tools",

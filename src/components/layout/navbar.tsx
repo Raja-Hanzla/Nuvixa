@@ -22,7 +22,7 @@ import { categoryDot, categoryLabels } from "@/types/tool";
 const navLinks = [
   { href: "/tools", label: "All Tools" },
   { href: "/#categories", label: "Categories" },
-  { href: "/#about", label: "About" },
+  { href: "/about", label: "About" },
 ];
 
 export function Navbar() {

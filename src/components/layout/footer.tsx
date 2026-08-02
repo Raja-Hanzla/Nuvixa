@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Github, Twitter } from "lucide-react";
 
 import { Logo } from "@/components/layout/logo";
 import { tools } from "@/lib/tools-registry";
@@ -10,7 +9,7 @@ export function Footer() {
   const categories = Object.entries(categoryLabels);
 
   return (
-    <footer id="about" className="border-t border-border bg-secondary/40">
+    <footer className="border-t border-border bg-secondary/40">
       <div className="container py-14">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
           <div className="col-span-2 md:col-span-2">
@@ -18,22 +17,6 @@ export function Footer() {
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
               {siteConfig.description}
             </p>
-            <div className="mt-5 flex items-center gap-3">
-              <Link
-                href={siteConfig.links.twitter}
-                className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
-                aria-label="Nuvixa on Twitter"
-              >
-                <Twitter className="h-4 w-4" />
-              </Link>
-              <Link
-                href={siteConfig.links.github}
-                className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
-                aria-label="Nuvixa on GitHub"
-              >
-                <Github className="h-4 w-4" />
-              </Link>
-            </div>
           </div>
 
           <div>
@@ -77,8 +60,18 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/#categories" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-                  Categories
+                <Link href="/about" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                  Privacy Policy
                 </Link>
               </li>
             </ul>
