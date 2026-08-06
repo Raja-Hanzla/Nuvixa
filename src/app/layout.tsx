@@ -58,19 +58,22 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  // Add AdSense verification to metadata
+  verification: {
+    google: "ca-pub-2999408290564644",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-<head>
+      <head>
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2999408290564644"
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
-<meta name="google-adsense-account" content="ca-pub-2999408290564644">
       </head>
       <body className={`${display.variable} ${body.variable} ${mono.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
