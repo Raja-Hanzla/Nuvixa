@@ -7,6 +7,7 @@ export type ToolCategory =
   | "ai"
   | "finance"
   | "marketing"
+  | "security"
   | "utility";
 
 export interface FaqItem {
@@ -41,6 +42,7 @@ export const categoryLabels: Record<ToolCategory, string> = {
   ai: "AI",
   finance: "Finance",
   marketing: "Marketing",
+  security: "Security & Compliance",
   utility: "Utility",
 };
 
@@ -52,5 +54,6 @@ export const categoryDot: Record<ToolCategory, string> = {
   ai: "bg-spark",
   finance: "bg-emerald-500",
   marketing: "bg-rose-500",
+  security: "bg-slate-500",
   utility: "bg-sky-500",
 };
