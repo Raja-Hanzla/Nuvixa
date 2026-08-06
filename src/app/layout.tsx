@@ -70,6 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
+<meta name="google-adsense-account" content="ca-pub-2999408290564644">
       </head>
       <body className={`${display.variable} ${body.variable} ${mono.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
