@@ -58,10 +58,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  // Add AdSense verification to metadata
-  verification: {
-    google: "ca-pub-2999408290564644",
-  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
