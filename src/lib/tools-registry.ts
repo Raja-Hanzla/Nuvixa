@@ -1,4 +1,4 @@
-import { CalendarClock, FileText, Calculator, Timer, Search, ShoppingCart, BarChart3, Link2, KeyRound, ScrollText, Lock, Braces, Contrast, LayoutGrid, FileImage } from "lucide-react";
+import { CalendarClock, FileText, Calculator, Timer, Search, ShoppingCart, BarChart3, Link2, KeyRound, ScrollText, Lock, Braces, Contrast, LayoutGrid, FileImage, Building2, TrendingUp, PieChart, Car, Scale, Snowflake, Home, FileSignature, ShieldCheck, Database, ShieldHalf, Users, ServerCrash, Fingerprint, Tag } from "lucide-react";
 
 import type { Tool } from "@/types/tool";
 
@@ -654,7 +654,6 @@ export const tools: Tool[] = [
       "Drag and drop an .svg file or paste its XML directly, and instantly get a clean data:image/svg+xml;base64 URI — plus a URL-encoded alternative, a ready-to-use CSS background-image snippet, and an HTML img tag, all with live preview and size comparisons.",
     category: "developer",
     icon: FileImage,
-    isNew: true,
     keywords: [
       "svg to data uri",
       "svg to base64",
@@ -689,6 +688,692 @@ export const tools: Tool[] = [
         question: "When should I inline an SVG instead of linking to a file?",
         answer:
           "Inlining avoids an extra HTTP request, which helps for small, frequently-used icons — but for larger or rarely-changed SVGs, a normal file reference (cacheable by the browser) is usually more efficient. The size stats shown here can help you decide.",
+      },
+    ],
+  },
+  {
+    slug: "lease-calculator",
+    name: "Commercial Lease Rent Roll & Square Foot Calculator",
+    tagline: "See the real monthly cost behind a $/sqft lease quote.",
+    description:
+      "Enter square footage, base rent, NNN expenses, and annual escalation rates, and instantly get the true monthly operational cost — plus a full year-by-year rent roll showing exactly how much it grows over your lease term.",
+    category: "finance",
+    icon: Building2,
+    keywords: [
+      "commercial lease calculator",
+      "rent roll calculator",
+      "nnn lease calculator",
+      "price per square foot calculator",
+      "commercial rent calculator",
+      "triple net lease calculator",
+    ],
+    howTo: [
+      "Enter the rentable square footage and base rent per square foot per year.",
+      "Add NNN/CAM expenses per square foot — this typically covers taxes, insurance, and maintenance.",
+      "Set separate annual escalation rates for base rent and NNN, and your lease term in years.",
+      "Read the year-by-year rent roll to see how monthly and annual costs grow over the full term.",
+    ],
+    faq: [
+      {
+        question: "What does NNN mean?",
+        answer:
+          "Triple net (NNN) means the tenant pays, on top of base rent, a share of the property's taxes, insurance, and common area maintenance — the three \"nets.\" It's usually quoted as an additional $/sqft/year figure, which is what this tool adds to base rent.",
+      },
+      {
+        question: "Why are there two separate escalation rates?",
+        answer:
+          "Base rent escalation is typically a fixed percentage set in the lease. NNN charges often grow at a different rate tied to actual operating cost increases, so keeping them separate gives a more realistic year-by-year projection.",
+      },
+      {
+        question: "Is this the same as what my landlord will quote me?",
+        answer:
+          "It should be very close if you enter the same $/sqft figures they've quoted, but always confirm exact NNN estimates and escalation terms directly against the actual lease document before signing.",
+      },
+      {
+        question: "Does this account for free rent or tenant improvement allowances?",
+        answer:
+          "No — this calculates the stated lease economics only. Free rent periods and TI allowances would need to be factored in separately when comparing the true effective cost of a lease.",
+      },
+    ],
+  },
+  {
+    slug: "mrr-retention",
+    name: "SaaS Expansion MRR & Net Retention Calculator",
+    tagline: "Turn your MRR movement into NRR, GRR, and net churn.",
+    description:
+      "Enter your starting MRR along with New, Expansion, Contraction, and Churned MRR for the period, and instantly get Net Revenue Retention, Gross Revenue Retention, net churn, and gross churn — the metrics investors and boards actually ask for.",
+    category: "finance",
+    icon: TrendingUp,
+    keywords: [
+      "net revenue retention calculator",
+      "nrr calculator",
+      "mrr calculator",
+      "saas churn calculator",
+      "net dollar retention calculator",
+      "gross revenue retention calculator",
+    ],
+    howTo: [
+      "Enter your starting MRR for the period you're measuring.",
+      "Enter New MRR from new customers, and Expansion MRR from upgrades to existing customers.",
+      "Enter Contraction MRR from downgrades and Churned MRR from cancellations.",
+      "Read your ending MRR, growth rate, and both NRR and GRR instantly.",
+    ],
+    faq: [
+      {
+        question: "Why isn't New MRR included in the NRR calculation?",
+        answer:
+          "NRR is specifically designed to measure how well you retain and grow revenue from customers you already had at the start of the period — including new customers would conflate two very different things: retention and new customer acquisition.",
+      },
+      {
+        question: "What's considered a good NRR?",
+        answer:
+          "Above 100% means your existing customers are spending more over time even before counting new logos — generally seen as a strong signal. Best-in-class SaaS companies often report NRR in the 110-130%+ range, though \"good\" varies a lot by company size and market.",
+      },
+      {
+        question: "What's the difference between net churn and gross churn?",
+        answer:
+          "Gross churn only counts revenue lost to cancellations. Net churn also factors in contraction (downgrades) and expansion (upgrades) — it can even go negative if expansion revenue outpaces losses, which is the \"negative churn\" SaaS companies aim for.",
+      },
+      {
+        question: "Does this work for annual contracts, or just monthly?",
+        answer:
+          "The math works the same regardless of billing cadence — just be consistent about the period you're measuring (e.g., use ARR figures throughout instead of MRR if that's how you track revenue).",
+      },
+    ],
+  },
+  {
+    slug: "cap-table-simulator",
+    name: "Startup Equity Dilution & Cap Table Simulator",
+    tagline: "Stack SAFEs and priced rounds, watch founder ownership shrink.",
+    description:
+      "Add a sequence of SAFEs, convertible notes, and priced equity rounds — each with its own cap, discount, or pre-money valuation — and instantly see how founder ownership dilutes round by round, including a correctly-modeled option pool shuffle.",
+    category: "finance",
+    icon: PieChart,
+    keywords: [
+      "cap table simulator",
+      "equity dilution calculator",
+      "safe note calculator",
+      "startup equity calculator",
+      "founder dilution calculator",
+      "priced round calculator",
+    ],
+    howTo: [
+      "Click \"Add SAFE / Note\" or \"Add priced round\" to build your funding sequence in order.",
+      "Fill in each round's amount, and either a valuation cap (SAFE) or pre-money valuation (priced round).",
+      "For priced rounds, set an option pool top-up percentage if one applies — it dilutes before the new investor's stake is calculated.",
+      "Watch founder ownership and the full cap table update after every round you add.",
+    ],
+    faq: [
+      {
+        question: "How are SAFEs modeled here?",
+        answer:
+          "As a simplification, each SAFE is treated as converting immediately at its own valuation cap (adjusted for any discount), rather than waiting to convert at a later priced round the way real SAFEs legally work. This keeps the simulation straightforward for quick modeling, but it's not exactly how conversion timing works in practice.",
+      },
+      {
+        question: "What is the \"option pool shuffle\"?",
+        answer:
+          "When a priced round includes a new option pool, that pool is typically carved out of the company before the new investor's percentage is calculated — meaning existing shareholders (not the incoming investor) absorb that dilution. This tool models that correctly, which many quick calculators skip.",
+      },
+      {
+        question: "Can I model multiple founders separately?",
+        answer:
+          "Not directly — \"Founders\" is tracked as one combined line. If you have a known split (e.g., 60/40 between two founders), apply that ratio to the founder percentage shown at any point to find each person's individual stake.",
+      },
+      {
+        question: "Is this a substitute for real cap table software?",
+        answer:
+          "No — this is a directional modeling tool for understanding dilution mechanics. For your actual cap table, use dedicated software like Carta or Pulley, and involve a startup lawyer for anything you're actually signing.",
+      },
+    ],
+  },
+  {
+    slug: "tax-deduction-estimator",
+    name: "Freelance Tax Deduction & Mileage Expense Estimator",
+    tagline: "Turn a mileage log and receipts into an estimated deduction.",
+    description:
+      "Log business trips and itemized expenses, and get an estimated total tax deduction — mileage is calculated using the correct current IRS rate automatically applied per trip date, and business meals are automatically limited to their 50% deductible portion.",
+    category: "finance",
+    icon: Car,
+    keywords: [
+      "mileage deduction calculator",
+      "freelance tax deduction calculator",
+      "irs mileage rate calculator",
+      "self employed tax deduction estimator",
+      "business expense deduction calculator",
+      "1099 tax deduction calculator",
+    ],
+    howTo: [
+      "Add each business trip with its date, miles driven, and purpose — the correct IRS rate for that date is applied automatically.",
+      "Add itemized business expenses by category, description, and amount.",
+      "Business meals are automatically capped at 50% deductible, per IRS rules — everything else defaults to fully deductible.",
+      "Review your estimated total deduction and copy the summary for your records.",
+    ],
+    faq: [
+      {
+        question: "Why does the mileage rate change depending on the date?",
+        answer:
+          "The IRS occasionally adjusts its standard mileage rate mid-year when fuel costs shift significantly — 2026 is one of those years, with a rate change effective July 1. This tool applies whichever rate was actually in effect for each trip's date, rather than one flat rate for the whole year.",
+      },
+      {
+        question: "Why are business meals only 50% deductible?",
+        answer:
+          "IRS rules generally limit the deduction for business meals to 50% of the cost, even though the meal itself is a legitimate business expense — this tool applies that limit automatically so your estimate isn't overstated.",
+      },
+      {
+        question: "Is this an official tax filing tool?",
+        answer:
+          "No — it's a planning estimate, not tax advice or a filing tool. Whether a specific expense actually qualifies as deductible depends on your individual situation; confirm with a tax professional or CPA before filing.",
+      },
+      {
+        question: "Should I use the standard mileage rate or actual vehicle expenses?",
+        answer:
+          "That depends on your situation — the standard mileage rate (used here) is simpler and often favorable for lower-cost vehicles, while tracking actual expenses (gas, depreciation, repairs) can be better for more expensive or heavily-used vehicles. A tax professional can help you compare both for your specific case.",
+      },
+    ],
+  },
+  {
+    slug: "equipment-lease-vs-buy",
+    name: "Equipment Lease vs. Buy Cash Flow Matrix",
+    tagline: "Compare the real, discounted cost of leasing against buying outright.",
+    description:
+      "Enter equipment cost, useful life, tax rate, and lease terms, and instantly compare the net present value of buying versus leasing — factoring in the depreciation tax shield on a purchase against the after-tax cost of lease payments over your full analysis period.",
+    category: "finance",
+    icon: Scale,
+    isNew: true,
+    keywords: [
+      "lease vs buy calculator",
+      "equipment financing calculator",
+      "lease vs purchase analysis",
+      "npv lease calculator",
+      "capital expenditure calculator",
+      "equipment lease calculator",
+    ],
+    howTo: [
+      "Enter the equipment's purchase cost, useful life, and your effective tax rate.",
+      "Enter the monthly lease payment you're being offered for the same equipment.",
+      "Set your analysis period and discount rate — the rate you'd otherwise earn or pay on capital.",
+      "Compare the two NPV figures — whichever is higher (less negative) is the cheaper option in present-value terms.",
+    ],
+    faq: [
+      {
+        question: "What is the \"depreciation tax shield\"?",
+        answer:
+          "When you buy equipment, depreciating it reduces your taxable income each year, which lowers your tax bill — that tax savings is the \"shield.\" This tool spreads it evenly over the equipment's useful life (straight-line depreciation), which is a simplification of real depreciation schedules like MACRS.",
+      },
+      {
+        question: "Why use net present value instead of just comparing totals?",
+        answer:
+          "A dollar today is worth more than a dollar in three years, since you could otherwise invest it. NPV discounts future cash flows back to today's dollars using your discount rate, giving a fairer apples-to-apples comparison than simply summing raw totals.",
+      },
+      {
+        question: "Does this account for the equipment's resale value?",
+        answer:
+          "No — it assumes you keep and fully depreciate the equipment over the analysis period. If you plan to resell it, add the expected resale value as a positive cash flow in your own follow-up analysis.",
+      },
+      {
+        question: "Is this a substitute for advice from an accountant?",
+        answer:
+          "No — actual depreciation schedules, tax treatment, and financing terms vary by situation and jurisdiction. Use this for directional comparison, and confirm the real numbers with your accountant before committing.",
+      },
+    ],
+  },
+  {
+    slug: "debt-payoff-planner",
+    name: "Debt Snowball vs. Avalanche Repayment Planner",
+    tagline: "See exactly how much faster and cheaper avalanche really is.",
+    description:
+      "Enter your debts with their balances, interest rates, and minimum payments, and instantly get side-by-side payoff timelines for the snowball (smallest balance first) and avalanche (highest interest first) strategies — including total interest paid and months to debt-free for each.",
+    category: "finance",
+    icon: Snowflake,
+    isNew: true,
+    keywords: [
+      "debt snowball calculator",
+      "debt avalanche calculator",
+      "debt payoff calculator",
+      "credit card payoff calculator",
+      "debt free calculator",
+      "debt repayment planner",
+    ],
+    howTo: [
+      "Add each debt with its current balance, interest rate (APR), and minimum monthly payment.",
+      "Enter how much extra you can put toward debt each month, beyond the minimums.",
+      "Compare the snowball and avalanche timelines side by side — months to payoff and total interest for each.",
+      "Copy the full comparison, including payoff order, to reference as you go.",
+    ],
+    faq: [
+      {
+        question: "Which strategy actually saves more money?",
+        answer:
+          "Avalanche (highest interest rate first) almost always saves more in total interest, since it eliminates your most expensive debt fastest. The difference can be small or large depending on how much your interest rates vary across debts.",
+      },
+      {
+        question: "Then why would anyone choose snowball?",
+        answer:
+          "Snowball (smallest balance first) clears individual debts faster, which some people find more motivating — those quick wins can matter more for actually sticking with a payoff plan than the extra interest saved by avalanche.",
+      },
+      {
+        question: "What happens to a debt's minimum payment once it's paid off?",
+        answer:
+          "That freed-up minimum payment gets rolled into your extra payment amount and redirected to your next target debt — this \"snowballing\" of payments is what makes both strategies accelerate over time.",
+      },
+      {
+        question: "Does this account for changing interest rates or promotional periods?",
+        answer:
+          "No — it assumes fixed rates for the full payoff period. If you have a variable-rate card or an intro APR that expires, treat this as a rough estimate rather than an exact timeline.",
+      },
+    ],
+  },
+  {
+    slug: "home-seller-proceeds",
+    name: "Home Seller Proceeds & Closing Cost Estimator",
+    tagline: "See exactly what you'll walk away with after selling.",
+    description:
+      "Enter your sale price, mortgage payoff, agent commission, transfer tax, title fees, and any concessions, and instantly get a clear net proceeds summary — a straightforward closing cost breakdown before you sign anything.",
+    category: "finance",
+    icon: Home,
+    isNew: true,
+    keywords: [
+      "home seller proceeds calculator",
+      "closing cost calculator seller",
+      "net proceeds calculator",
+      "home sale calculator",
+      "real estate closing costs",
+      "seller net sheet calculator",
+    ],
+    howTo: [
+      "Enter your expected sale price and remaining mortgage payoff amount.",
+      "Enter your agent's commission rate and your local transfer tax rate.",
+      "Add title and escrow fees, plus any seller concessions or repair credits you're offering the buyer.",
+      "Read your estimated net proceeds — the amount you'd actually walk away with.",
+    ],
+    faq: [
+      {
+        question: "What's a typical agent commission rate?",
+        answer:
+          "It varies by market and negotiation, but commissions in the roughly 4-6% range (often split between listing and buyer's agents) have historically been common in the US, though this has been shifting — confirm the actual rate with your agent.",
+      },
+      {
+        question: "What are seller concessions?",
+        answer:
+          "Money or credits a seller agrees to give the buyer as part of the deal — often to help cover the buyer's closing costs or to compensate for needed repairs found during inspection.",
+      },
+      {
+        question: "Does this include capital gains tax?",
+        answer:
+          "No — capital gains tax on a home sale depends on your cost basis, how long you've owned the property, and exclusions that may apply (like the primary residence exclusion) — this tool doesn't estimate that. Talk to a tax professional about your specific situation.",
+      },
+      {
+        question: "Are transfer taxes the same everywhere?",
+        answer:
+          "No — transfer tax rates and who pays them (buyer, seller, or split) vary significantly by state and even by county or city. Confirm the actual local rate with your agent or title company.",
+      },
+    ],
+  },
+  {
+    slug: "nda-builder",
+    name: "Mutual Non-Disclosure Agreement (NDA) Clause Builder",
+    tagline: "Answer a few questions, get a baseline NDA draft.",
+    description:
+      "Choose mutual or unilateral, set your term and jurisdiction, and instantly get a structured, plain-text baseline NDA you can copy or download — a starting point to adapt before you actually need to share confidential information with someone.",
+    category: "security",
+    icon: FileSignature,
+    isNew: true,
+    keywords: [
+      "nda template generator",
+      "mutual nda template",
+      "non disclosure agreement generator",
+      "free nda template",
+      "unilateral nda template",
+      "nda builder",
+    ],
+    howTo: [
+      "Choose Mutual (both parties share confidential info) or Unilateral (only one party does).",
+      "Enter both party names, the effective date, and how long the agreement should last.",
+      "Set your governing jurisdiction and briefly describe the purpose of disclosure.",
+      "Copy or download the generated draft, then have both parties (and ideally a lawyer) review it.",
+    ],
+    faq: [
+      {
+        question: "What's the difference between mutual and unilateral?",
+        answer:
+          "A mutual NDA protects information both parties might share with each other — common for partnership or investment discussions. A unilateral NDA protects information flowing in only one direction — common when a company shares confidential details with a single contractor or vendor.",
+      },
+      {
+        question: "Is this legally binding as-is?",
+        answer:
+          "It's a generic starting-point template, not a finished legal document. Have a lawyer review and adapt it — especially the jurisdiction, term, and definitions — before either party signs it.",
+      },
+      {
+        question: "What should I put for \"purpose of disclosure\"?",
+        answer:
+          "Be specific enough that it's clear what the agreement covers — e.g., \"evaluating a potential partnership around joint marketing\" rather than something vague like \"business purposes,\" which can weaken enforceability.",
+      },
+      {
+        question: "Can I use this for an employee NDA?",
+        answer:
+          "This is built for a standalone mutual/unilateral NDA between two parties, not full employment agreements — those typically include additional terms (IP assignment, non-compete, etc.) that a lawyer should draft separately.",
+      },
+    ],
+  },
+  {
+    slug: "saml-jwt-decoder",
+    name: "SAML 2.0 / OAuth Payload Decoder & Visual Inspector",
+    tagline: "Paste a token or assertion, see exactly what's inside.",
+    description:
+      "Paste a JWT or a base64-encoded SAML assertion and instantly get it decoded client-side into a clean, readable JSON or XML view — including human-readable timestamps for exp/iat claims — built for fast SSO troubleshooting.",
+    category: "developer",
+    icon: KeyRound,
+    isNew: true,
+    keywords: [
+      "jwt decoder",
+      "saml decoder",
+      "jwt debugger",
+      "saml assertion decoder",
+      "oauth token decoder",
+      "sso troubleshooting tool",
+    ],
+    howTo: [
+      "Paste a JWT (three dot-separated segments) or a base64-encoded SAML assertion — the type is detected automatically.",
+      "For JWTs, review the decoded header and payload, plus human-readable expiry and issued-at times.",
+      "For SAML, review the pretty-printed XML structure.",
+      "Copy whichever part you need for your troubleshooting or documentation.",
+    ],
+    faq: [
+      {
+        question: "Does this verify the token's signature?",
+        answer:
+          "No — it only decodes the header and payload so you can read their contents. Verifying a signature requires the actual signing secret or public key, which this tool never asks for or has access to.",
+      },
+      {
+        question: "Is my token sent anywhere?",
+        answer:
+          "No — decoding happens entirely in your browser using standard JavaScript. Nothing you paste is transmitted or logged, which matters given that tokens often contain sensitive session data.",
+      },
+      {
+        question: "Why didn't my SAML assertion decode?",
+        answer:
+          "This tool handles plain base64-encoded SAML XML (the common HTTP-POST binding format). It doesn't support DEFLATE-compressed SAML used in some HTTP-Redirect binding flows — if your assertion doesn't start with \"<\" after decoding, that's likely why.",
+      },
+      {
+        question: "What do exp, iat, and nbf mean in a JWT?",
+        answer:
+          "They're standard timestamp claims: iat is when the token was issued, exp is when it expires, and nbf (\"not before\") is when it becomes valid. This tool converts any of these it finds into readable dates automatically.",
+      },
+    ],
+  },
+  {
+    slug: "retention-schedule-builder",
+    name: "GDPR & CCPA Data Retention Schedule Builder",
+    tagline: "Turn your data categories into a structured retention schedule.",
+    description:
+      "Select the types of personal data your site collects — emails, IP addresses, payment logs, and more — and instantly build a structured, tabular data retention schedule with suggested retention periods and legal basis for each category.",
+    category: "security",
+    icon: Database,
+    isNew: true,
+    keywords: [
+      "data retention policy generator",
+      "gdpr retention schedule",
+      "ccpa data retention",
+      "data retention schedule template",
+      "privacy compliance tool",
+      "data retention policy builder",
+    ],
+    howTo: [
+      "Toggle on each category of personal data your site or product actually collects.",
+      "Adjust the suggested retention period and legal basis for each category as needed.",
+      "Review the generated schedule in table format.",
+      "Copy or download it as a starting point for your privacy documentation.",
+    ],
+    faq: [
+      {
+        question: "Are these retention periods legally required?",
+        answer:
+          "No — these are commonly-cited starting points, not fixed legal requirements. GDPR and CCPA both require that you retain data \"no longer than necessary,\" but the specific period depends on your actual business need and any applicable industry regulations.",
+      },
+      {
+        question: "What does \"legal basis\" mean under GDPR?",
+        answer:
+          "GDPR requires a valid legal basis for processing personal data — common ones include consent, contract performance, legal obligation, and legitimate interest. Each data category should map to the actual basis you're relying on.",
+      },
+      {
+        question: "Is this the same as a privacy policy?",
+        answer:
+          "No — a retention schedule is an internal (or published) record of how long you keep specific data categories and why. It often supports your privacy policy but isn't a replacement for it — see our Privacy Policy Generator for that.",
+      },
+      {
+        question: "Do I need this if I'm a small business?",
+        answer:
+          "If you collect any personal data from EU/UK or California residents, having a documented retention approach is good practice regardless of size — though the formality required scales with your risk and data volume. A privacy lawyer can advise on what's appropriate for you.",
+      },
+    ],
+  },
+  {
+    slug: "csp-generator",
+    name: "Content Security Policy (CSP) Header Generator",
+    tagline: "Build a valid CSP header by checking off allowed sources.",
+    description:
+      "Check off allowed script, style, image, and frame origins for each CSP directive, and instantly get a valid, correctly-formatted Content-Security-Policy header — plus real-time warnings when a setting like 'unsafe-inline' would weaken your XSS protection.",
+    category: "developer",
+    icon: ShieldHalf,
+    isNew: true,
+    keywords: [
+      "csp generator",
+      "content security policy generator",
+      "csp header builder",
+      "csp header generator",
+      "http security headers",
+      "csp meta tag generator",
+    ],
+    howTo: [
+      "For each directive (script-src, style-src, img-src, etc.), select which source keywords to allow.",
+      "Add any custom domains you need to allow, like a CDN or analytics provider.",
+      "Review any warnings — 'unsafe-inline' and 'unsafe-eval' significantly weaken your protection.",
+      "Copy the generated header value, or use the meta tag version if you can't set HTTP headers directly.",
+    ],
+    faq: [
+      {
+        question: "Should I use the HTTP header or the meta tag?",
+        answer:
+          "The HTTP header is generally preferred — it's set earlier in page load and supports directives (like frame-ancestors) that meta tags can't. Use the meta tag only if you don't have access to configure server headers.",
+      },
+      {
+        question: "Why does 'unsafe-inline' trigger a warning?",
+        answer:
+          "Allowing inline scripts or styles defeats much of the point of CSP as an XSS defense, since injected malicious inline code would also be allowed to run. It's sometimes unavoidable for legacy code, but should be scoped as narrowly as possible.",
+      },
+      {
+        question: "What's the difference between default-src and the other directives?",
+        answer:
+          "default-src is the fallback used for any resource type you haven't explicitly configured with its own directive. Setting specific directives (script-src, img-src, etc.) gives you more precise control and generally overrides the fallback for that resource type.",
+      },
+      {
+        question: "Will this break my site if I get it wrong?",
+        answer:
+          "A too-strict CSP can silently block scripts, styles, or images from loading. Test thoroughly in a staging environment — many browsers also support a Content-Security-Policy-Report-Only header for testing a policy without enforcing it yet.",
+      },
+    ],
+  },
+  {
+    slug: "contractor-classifier",
+    name: "Independent Contractor vs. Employee Classification Evaluator",
+    tagline: "Check the factors, see your misclassification risk.",
+    description:
+      "Work through common IRS behavioral, financial, and relationship factors used to distinguish employees from independent contractors, and get a misclassification risk score with a category-by-category breakdown — a starting point before you finalize how you classify a worker.",
+    category: "business",
+    icon: Users,
+    isNew: true,
+    keywords: [
+      "employee vs contractor test",
+      "worker classification test",
+      "irs 20 factor test",
+      "1099 vs w2 test",
+      "misclassification risk calculator",
+      "independent contractor test",
+    ],
+    howTo: [
+      "Go through each factor and toggle it on if it accurately describes the working relationship.",
+      "Review your misclassification risk score and which category (behavioral, financial, relationship) is driving it.",
+      "Copy the breakdown to document your reasoning or discuss with HR/legal counsel.",
+      "Re-run it whenever the working relationship changes meaningfully.",
+    ],
+    faq: [
+      {
+        question: "Is this the same test the IRS uses?",
+        answer:
+          "It's based on the same general categories the IRS common-law test considers (behavioral control, financial control, relationship of the parties), but it's a simplified checklist, not the official IRS determination process — which involves a more holistic, fact-specific analysis.",
+      },
+      {
+        question: "What is the \"ABC test\" mentioned in the disclaimer?",
+        answer:
+          "Several states (California notably, via AB5) use a stricter three-part \"ABC test\" where a worker is presumed to be an employee unless the company can prove all three specific conditions — it applies regardless of what a contract says, and can classify workers as employees even when the IRS factors here would lean contractor.",
+      },
+      {
+        question: "What happens if I misclassify a worker?",
+        answer:
+          "Consequences can include back taxes, penalties, unpaid overtime or benefits claims, and in some cases personal liability for company officers — the specifics depend on jurisdiction and how the misclassification is discovered.",
+      },
+      {
+        question: "Can one factor alone determine classification?",
+        answer:
+          "Generally no — classification is meant to be a holistic look at the whole relationship, not a single deciding factor. This tool's score reflects an overall pattern, not a single-factor verdict.",
+      },
+    ],
+  },
+  {
+    slug: "downtime-cost-estimator",
+    name: "Server Outage Downtime & Revenue Loss Estimator",
+    tagline: "Turn outage minutes into a real dollar figure.",
+    description:
+      "Enter your hourly transaction volume, average order value, and idled employee costs, and instantly calculate the true financial damage of an outage — in total and per minute — based on exactly how long it lasted.",
+    category: "business",
+    icon: ServerCrash,
+    isNew: true,
+    keywords: [
+      "downtime cost calculator",
+      "outage cost calculator",
+      "revenue loss calculator",
+      "server downtime calculator",
+      "cost of downtime calculator",
+      "incident cost estimator",
+    ],
+    howTo: [
+      "Enter your typical hourly transaction volume and average order or cart value.",
+      "Set the conversion impact percentage — 100% if the outage blocks all transactions entirely.",
+      "Add how many employees were idled and their average hourly wage.",
+      "Enter the actual outage duration to get your total estimated cost.",
+    ],
+    faq: [
+      {
+        question: "What does \"conversion impact\" mean?",
+        answer:
+          "It's the percentage of normal transaction volume actually lost during the outage. Use 100% for a full outage where no transactions can complete; use a lower number for a partial degradation where some traffic still converts.",
+      },
+      {
+        question: "Should I include support/customer service costs?",
+        answer:
+          "You can factor them into the \"employees idled\" and wage fields if support staff are actively working the incident rather than serving customers normally — otherwise this tool focuses on the direct revenue and labor impact.",
+      },
+      {
+        question: "Does this include reputational or churn costs?",
+        answer:
+          "No — this estimates direct, immediate financial impact only. Customer trust erosion and potential churn from a bad outage are real but much harder to quantify, and aren't included here.",
+      },
+      {
+        question: "Is this useful for a post-incident report?",
+        answer:
+          "Yes — the copyable summary gives you a quick, defensible dollar figure to include when communicating impact to leadership, which is often more persuasive than describing an outage in purely technical terms.",
+      },
+    ],
+  },
+  {
+    slug: "brand-name-search",
+    name: "Brand Name Phonetic & Trademark Search Builder",
+    tagline: "Generate the variants you should actually search for.",
+    description:
+      "Enter a proposed brand name and instantly get phonetic variations, character-swap and lookalike spellings, and wildcard-style search terms — a starting checklist to run through trademark databases before you fall in love with a name.",
+    category: "marketing",
+    icon: Fingerprint,
+    isNew: true,
+    keywords: [
+      "trademark search tool",
+      "brand name generator",
+      "trademark availability checker",
+      "phonetic name search",
+      "business name search tool",
+      "brand name checker",
+    ],
+    howTo: [
+      "Enter your proposed brand name.",
+      "Review the phonetic variants — names that sound similar when spoken.",
+      "Review the lookalike variants — common character swaps and near-misses.",
+      "Copy all the generated terms and run each one through the actual trademark databases you're checking.",
+    ],
+    faq: [
+      {
+        question: "Does this check trademark availability for me?",
+        answer:
+          "No — it only generates the search terms you should check. You still need to run these through the actual databases (USPTO's trademark search system, your country's equivalent, or WIPO's Global Brand Database for international marks).",
+      },
+      {
+        question: "Why does the tool mention USPTO's TESS system being retired?",
+        answer:
+          "USPTO retired its older TESS search tool in 2023 in favor of a newer system with different, regex-based search syntax. If you see older guides referencing TESS wildcard syntax specifically, treat it as outdated and check the current system's own search help instead.",
+      },
+      {
+        question: "Is a phonetic or lookalike match automatically a trademark conflict?",
+        answer:
+          "No — trademark conflict depends on likelihood of confusion in the marketplace, which considers the specific goods/services, industry, and more, not just spelling or sound similarity. This tool just helps you cast a wider net during initial research.",
+      },
+      {
+        question: "Should I still hire a trademark attorney?",
+        answer:
+          "Yes, especially before you actually file or invest heavily in a name — a proper clearance search and legal opinion catches conflicts far beyond what a self-search tool like this can surface.",
+      },
+    ],
+  },
+  {
+    slug: "pricing-margin-matrix",
+    name: "Product Pricing & Target Profit Margin Matrix",
+    tagline: "Solve for the exact price that hits your target margin.",
+    description:
+      "Enter your cost of goods, target profit margin, ad acquisition cost target, and payment gateway fees, and instantly get the precise retail price required to hit your margin after every cost is accounted for — not just a rough markup guess.",
+    category: "finance",
+    icon: Tag,
+    isNew: true,
+    keywords: [
+      "pricing calculator",
+      "profit margin calculator",
+      "retail price calculator",
+      "markup calculator",
+      "target margin pricing",
+      "product pricing calculator",
+    ],
+    howTo: [
+      "Enter your cost of goods sold (COGS) per unit.",
+      "Set your target profit margin as a percentage.",
+      "Enter your target ad acquisition cost (CPA) per sale, and your payment gateway's fee structure.",
+      "Read the exact price required, along with your true net profit per sale after everything.",
+    ],
+    faq: [
+      {
+        question: "Why isn't this just COGS divided by (1 - margin)?",
+        answer:
+          "That simpler formula ignores payment processing fees and ad acquisition costs, both of which scale with the final price or apply per sale — leaving them out understates the price you actually need to hit your real target margin.",
+      },
+      {
+        question: "What if I don't run paid ads for this product?",
+        answer:
+          "Set the ad CPA target to 0 — the calculation still works, and the required price will reflect just COGS, fees, and your target margin.",
+      },
+      {
+        question: "What's a typical payment gateway fee?",
+        answer:
+          "Many card processors charge around 2.9% plus a small fixed fee (often around $0.30) per transaction, though rates vary by provider, volume, and payment method — check your actual processor's rate.",
+      },
+      {
+        question: "Does this account for shipping costs?",
+        answer:
+          "Not directly — if you absorb shipping cost into your product price rather than charging it separately, add it into your COGS figure so it's reflected in the required price.",
       },
     ],
   },
