@@ -21,6 +21,7 @@ import { categoryDot, categoryLabels } from "@/types/tool";
 
 const navLinks = [
   { href: "/tools", label: "All Tools" },
+  { href: "/blog", label: "Blog" },
   { href: "/#categories", label: "Categories" },
   { href: "/about", label: "About" },
 ];
