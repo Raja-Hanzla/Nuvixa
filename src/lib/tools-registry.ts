@@ -1,4 +1,4 @@
-import { CalendarClock, FileText, Calculator, Timer, Search, ShoppingCart, BarChart3, Link2, KeyRound, ScrollText, Lock, Braces, Contrast, LayoutGrid, FileImage, Building2, TrendingUp, PieChart, Car, Scale, Snowflake, Home, FileSignature, ShieldCheck, Database, ShieldHalf, Users, ServerCrash, Fingerprint, Tag } from "lucide-react";
+import { CalendarClock, FileText, Calculator, Timer, Search, ShoppingCart, BarChart3, Link2, KeyRound, ScrollText, Lock, Braces, Contrast, LayoutGrid, FileImage, Building2, TrendingUp, PieChart, Car, Scale, Snowflake, Home, FileSignature, ShieldCheck, Database, ShieldHalf, Users, ServerCrash, Fingerprint, Tag, Video, Gauge, Handshake, Map, MailCheck } from "lucide-react";
 
 import type { Tool } from "@/types/tool";
 
@@ -879,7 +879,6 @@ export const tools: Tool[] = [
       "Enter equipment cost, useful life, tax rate, and lease terms, and instantly compare the net present value of buying versus leasing — factoring in the depreciation tax shield on a purchase against the after-tax cost of lease payments over your full analysis period.",
     category: "finance",
     icon: Scale,
-    isNew: true,
     keywords: [
       "lease vs buy calculator",
       "equipment financing calculator",
@@ -925,7 +924,6 @@ export const tools: Tool[] = [
       "Enter your debts with their balances, interest rates, and minimum payments, and instantly get side-by-side payoff timelines for the snowball (smallest balance first) and avalanche (highest interest first) strategies — including total interest paid and months to debt-free for each.",
     category: "finance",
     icon: Snowflake,
-    isNew: true,
     keywords: [
       "debt snowball calculator",
       "debt avalanche calculator",
@@ -971,7 +969,6 @@ export const tools: Tool[] = [
       "Enter your sale price, mortgage payoff, agent commission, transfer tax, title fees, and any concessions, and instantly get a clear net proceeds summary — a straightforward closing cost breakdown before you sign anything.",
     category: "finance",
     icon: Home,
-    isNew: true,
     keywords: [
       "home seller proceeds calculator",
       "closing cost calculator seller",
@@ -1017,7 +1014,6 @@ export const tools: Tool[] = [
       "Choose mutual or unilateral, set your term and jurisdiction, and instantly get a structured, plain-text baseline NDA you can copy or download — a starting point to adapt before you actually need to share confidential information with someone.",
     category: "security",
     icon: FileSignature,
-    isNew: true,
     keywords: [
       "nda template generator",
       "mutual nda template",
@@ -1063,7 +1059,6 @@ export const tools: Tool[] = [
       "Paste a JWT or a base64-encoded SAML assertion and instantly get it decoded client-side into a clean, readable JSON or XML view — including human-readable timestamps for exp/iat claims — built for fast SSO troubleshooting.",
     category: "developer",
     icon: KeyRound,
-    isNew: true,
     keywords: [
       "jwt decoder",
       "saml decoder",
@@ -1109,7 +1104,6 @@ export const tools: Tool[] = [
       "Select the types of personal data your site collects — emails, IP addresses, payment logs, and more — and instantly build a structured, tabular data retention schedule with suggested retention periods and legal basis for each category.",
     category: "security",
     icon: Database,
-    isNew: true,
     keywords: [
       "data retention policy generator",
       "gdpr retention schedule",
@@ -1155,7 +1149,6 @@ export const tools: Tool[] = [
       "Check off allowed script, style, image, and frame origins for each CSP directive, and instantly get a valid, correctly-formatted Content-Security-Policy header — plus real-time warnings when a setting like 'unsafe-inline' would weaken your XSS protection.",
     category: "developer",
     icon: ShieldHalf,
-    isNew: true,
     keywords: [
       "csp generator",
       "content security policy generator",
@@ -1201,7 +1194,6 @@ export const tools: Tool[] = [
       "Work through common IRS behavioral, financial, and relationship factors used to distinguish employees from independent contractors, and get a misclassification risk score with a category-by-category breakdown — a starting point before you finalize how you classify a worker.",
     category: "business",
     icon: Users,
-    isNew: true,
     keywords: [
       "employee vs contractor test",
       "worker classification test",
@@ -1247,7 +1239,6 @@ export const tools: Tool[] = [
       "Enter your hourly transaction volume, average order value, and idled employee costs, and instantly calculate the true financial damage of an outage — in total and per minute — based on exactly how long it lasted.",
     category: "business",
     icon: ServerCrash,
-    isNew: true,
     keywords: [
       "downtime cost calculator",
       "outage cost calculator",
@@ -1293,7 +1284,6 @@ export const tools: Tool[] = [
       "Enter a proposed brand name and instantly get phonetic variations, character-swap and lookalike spellings, and wildcard-style search terms — a starting checklist to run through trademark databases before you fall in love with a name.",
     category: "marketing",
     icon: Fingerprint,
-    isNew: true,
     keywords: [
       "trademark search tool",
       "brand name generator",
@@ -1339,7 +1329,6 @@ export const tools: Tool[] = [
       "Enter your cost of goods, target profit margin, ad acquisition cost target, and payment gateway fees, and instantly get the precise retail price required to hit your margin after every cost is accounted for — not just a rough markup guess.",
     category: "finance",
     icon: Tag,
-    isNew: true,
     keywords: [
       "pricing calculator",
       "profit margin calculator",
@@ -1374,6 +1363,236 @@ export const tools: Tool[] = [
         question: "Does this account for shipping costs?",
         answer:
           "Not directly — if you absorb shipping cost into your product price rather than charging it separately, add it into your COGS figure so it's reflected in the required price.",
+      },
+    ],
+  },
+  {
+    slug: "safe-zone-visualizer",
+    name: "Social Media Video Ad Safe Zone Overlay Visualizer",
+    tagline: "See exactly where TikTok, Reels, and Shorts UI blocks your video.",
+    description:
+      "Preview your vertical video creative against approximate safe-zone overlays for TikTok, Instagram Reels, and YouTube Shorts, plus a combined view showing the zone that clears all three platforms' UI at once — so captions, faces, and CTAs never end up hidden behind buttons.",
+    category: "marketing",
+    icon: Video,
+    isNew: true,
+    keywords: [
+      "tiktok safe zone",
+      "reels safe zone",
+      "youtube shorts safe zone",
+      "vertical video template",
+      "social media ad safe zone",
+      "9:16 video safe zone",
+    ],
+    howTo: [
+      "Optionally upload a still frame or cover image from your video.",
+      "Switch between TikTok, Reels, and Shorts to see each platform's approximate blocked zones.",
+      "Use \"All 3 (combined)\" to see the single safe zone that clears every platform at once.",
+      "Keep captions, faces, and calls-to-action inside the dashed green boundary.",
+    ],
+    faq: [
+      {
+        question: "Are these exact pixel-perfect safe zones?",
+        answer:
+          "No — they're rounded, illustrative approximations based on commonly published guidance. Different sources cite slightly different exact numbers, and all three platforms update their UI overlays periodically, so always preview your actual export inside the real app before finalizing paid creative.",
+      },
+      {
+        question: "Why is the bottom zone so much bigger than the top?",
+        answer:
+          "Captions, sound/audio attribution, and (on Reels and Shorts especially) creator info and subscribe buttons stack up at the bottom of the frame — that's consistently the most crowded zone across all three platforms.",
+      },
+      {
+        question: "Should I always design for the combined zone?",
+        answer:
+          "Only if you're repurposing one video across all three platforms. If you're creating platform-specific creative, using each platform's individual (larger) safe zone gives you more usable frame space.",
+      },
+      {
+        question: "Does my uploaded image get sent anywhere?",
+        answer:
+          "No — it's read directly in your browser and never uploaded to a server.",
+      },
+    ],
+  },
+  {
+    slug: "quality-score-estimator",
+    name: "Google Ads Quality Score Breakdown & Cost Estimator",
+    tagline: "See how your three Quality Score components affect what you actually pay.",
+    description:
+      "Rate your Expected CTR, Ad Relevance, and Landing Page Experience, and get an estimated Quality Score along with its likely relative CPC impact — grounded in Google's documented Ad Rank formula, where cost scales inversely with Quality Score.",
+    category: "marketing",
+    icon: Gauge,
+    isNew: true,
+    keywords: [
+      "google ads quality score",
+      "quality score calculator",
+      "cpc calculator google ads",
+      "expected ctr quality score",
+      "ad rank calculator",
+      "google ads cost estimator",
+    ],
+    howTo: [
+      "Rate each of the three components — Expected CTR, Landing Page Experience, Ad Relevance — as shown in your Google Ads account.",
+      "Review your estimated Quality Score and its relative CPC impact versus an average advertiser.",
+      "Optionally enter your current average CPC to see projected costs at different Quality Score levels.",
+      "Use the projection table to see how much improving your score could realistically save.",
+    ],
+    faq: [
+      {
+        question: "Is this Google's actual Quality Score formula?",
+        answer:
+          "No — Google doesn't publish its exact formula or component weights. This estimate uses commonly-cited third-party weightings for the three components, and models the cost relationship using Google's own documented Ad Rank formula (bid × Quality Score), which implies cost scales inversely with your score.",
+      },
+      {
+        question: "Why does cost scale inversely with Quality Score?",
+        answer:
+          "Because Ad Rank = Bid × Quality Score, two advertisers achieving the same Ad Rank (and therefore the same ad position) must have bids that are inversely proportional to their Quality Scores — a higher score lets you bid less for the same position.",
+      },
+      {
+        question: "Does the exact percentage shown actually apply to my account?",
+        answer:
+          "Treat it as directional. Real auctions also depend on competitor bids, ad rank thresholds, and other factors Google doesn't fully disclose — this shows the shape of the relationship, not a guaranteed dollar figure.",
+      },
+      {
+        question: "Which component should I prioritize improving?",
+        answer:
+          "Google has stated Expected CTR is generally weighted most heavily of the three, which lines up with the commonly-cited third-party weightings used here — testing ad copy to improve CTR is often the highest-leverage place to start.",
+      },
+    ],
+  },
+  {
+    slug: "influencer-rate-calculator",
+    name: "Influencer Sponsorship Rate & Gifted Campaign Calculator",
+    tagline: "Get a defensible starting rate before you negotiate.",
+    description:
+      "Enter your platform, follower count, engagement rate, niche, and deliverables, and get an illustrative baseline sponsorship rate built from commonly-cited industry pricing patterns — including volume discounts for multi-post packages and add-ons for usage rights or exclusivity.",
+    category: "marketing",
+    icon: Handshake,
+    isNew: true,
+    keywords: [
+      "influencer rate calculator",
+      "sponsored post pricing",
+      "influencer pricing calculator",
+      "creator rate card",
+      "gifted collaboration calculator",
+      "instagram sponsorship rate",
+    ],
+    howTo: [
+      "Enter your follower count and engagement rate, then pick your platform/format and niche.",
+      "Set how many deliverables are in the package — 3 or more typically earns a bulk discount.",
+      "Toggle on usage rights or exclusivity if the brand is asking for either.",
+      "Copy the rate breakdown to reference while negotiating.",
+    ],
+    faq: [
+      {
+        question: "Is this the exact rate I should charge?",
+        answer:
+          "No — it's an illustrative baseline built from commonly-cited industry rules of thumb, not a guaranteed market rate. Actual rates vary widely by negotiation, brand budget, and relationship history. Use it as a starting point for a conversation, not a final number.",
+      },
+      {
+        question: "Why does engagement rate matter so much?",
+        answer:
+          "Two accounts with the same follower count can have very different actual reach — an account with above-benchmark engagement for its size is generally worth more per follower, and this tool adjusts the baseline rate accordingly.",
+      },
+      {
+        question: "What counts as \"usage rights\" or \"whitelisting\"?",
+        answer:
+          "Usage rights let the brand reuse your content in their own marketing (website, email, other social accounts) beyond the original post. Whitelisting specifically lets them run ads through your account/handle. Both are common asks that go beyond a standard sponsored post and are usually priced separately.",
+      },
+      {
+        question: "Should nano influencers accept gifted-only deals?",
+        answer:
+          "That's a personal call — gifted-only collaborations are common at smaller follower counts, but if your engagement or niche adds real value, you're not obligated to accept unpaid work. The calculated rate is a useful reference point either way.",
+      },
+    ],
+  },
+  {
+    slug: "sitemap-builder",
+    name: "XML Sitemap Priority & Changefreq Tag Builder",
+    tagline: "Turn a list of URLs into a valid sitemap.xml instantly.",
+    description:
+      "Paste a list of URLs and get a valid sitemap.xml file with priority and changefreq values auto-assigned based on URL depth — fully editable per entry, with validation for malformed URLs before you download or copy the final markup.",
+    category: "developer",
+    icon: Map,
+    isNew: true,
+    keywords: [
+      "xml sitemap generator",
+      "sitemap builder",
+      "sitemap.xml generator",
+      "changefreq priority tags",
+      "sitemap creator tool",
+      "sitemaps.org generator",
+    ],
+    howTo: [
+      "Paste your list of URLs, one per line, and click \"Generate entries.\"",
+      "Review the auto-assigned priority and changefreq for each — shallower URLs get higher priority by default.",
+      "Edit any entry's date, changefreq, or priority manually if needed.",
+      "Copy the generated XML or download it directly as sitemap.xml.",
+    ],
+    faq: [
+      {
+        question: "Does priority or changefreq affect my Google ranking?",
+        answer:
+          "No — Google has stated it ignores both values for ranking and crawling decisions. They're valid per the sitemap protocol and some other search engines or crawlers may still use them, but don't expect tweaking these numbers to move your rankings.",
+      },
+      {
+        question: "How is priority auto-assigned?",
+        answer:
+          "By URL depth: your homepage gets 1.0, top-level pages (like /pricing) get 0.8, and deeper nested pages get progressively lower values. This is a reasonable heuristic, not a requirement — edit any value you disagree with.",
+      },
+      {
+        question: "What if a URL is invalid?",
+        answer:
+          "Invalid URLs are flagged in red and automatically excluded from the generated XML output, so a typo doesn't silently produce a broken sitemap.",
+      },
+      {
+        question: "Is there a limit to how many URLs a sitemap can hold?",
+        answer:
+          "Per the sitemap protocol, a single sitemap file should contain no more than 50,000 URLs and be no larger than 50MB uncompressed — larger sites use a sitemap index file that links to multiple individual sitemaps.",
+      },
+    ],
+  },
+  {
+    slug: "spf-dkim-validator",
+    name: "SPF & DKIM Email Record Syntax Validator",
+    tagline: "Catch email authentication errors before they cause deliverability problems.",
+    description:
+      "Paste a raw SPF or DKIM DNS record and get instant, client-side validation against the actual RFC standards — including the critical 10-DNS-lookup SPF limit, missing required tags, malformed IP addresses, and invalid base64 in DKIM public keys.",
+    category: "developer",
+    icon: MailCheck,
+    isNew: true,
+    keywords: [
+      "spf record checker",
+      "dkim record validator",
+      "spf syntax checker",
+      "dkim syntax validator",
+      "email authentication checker",
+      "spf 10 lookup limit",
+    ],
+    howTo: [
+      "Switch between SPF and DKIM depending on which record you're checking.",
+      "Paste the raw TXT record value exactly as published in your DNS.",
+      "Review any errors (must fix) and warnings (worth checking) listed below.",
+      "For SPF, watch your DNS lookup count — exceeding 10 causes a hard failure.",
+    ],
+    faq: [
+      {
+        question: "Why does the 10-lookup limit matter so much for SPF?",
+        answer:
+          "RFC 7208 caps the number of DNS-lookup-causing mechanisms (include, a, mx, ptr, exists) at 10. Exceeding it doesn't just weaken your SPF — it causes a permanent error, which many mail providers treat as an outright SPF failure for all your mail, not just a warning.",
+      },
+      {
+        question: "What does an empty \"p=\" tag mean in DKIM?",
+        answer:
+          "An empty p= tag is a documented way to intentionally revoke a DKIM key while keeping the DNS record in place — it's flagged as a warning here rather than an error, since it may be deliberate.",
+      },
+      {
+        question: "Does this actually query my DNS records?",
+        answer:
+          "No — you paste in the record value yourself, and everything is validated locally in your browser. This tool checks syntax and structure, not whether the record is actually published correctly in your live DNS.",
+      },
+      {
+        question: "Why does the \"ptr\" mechanism get flagged?",
+        answer:
+          "The \"ptr\" mechanism is explicitly discouraged in RFC 7208 itself due to its unreliability and the extra DNS load it creates — most modern SPF guidance recommends avoiding it entirely.",
       },
     ],
   },
