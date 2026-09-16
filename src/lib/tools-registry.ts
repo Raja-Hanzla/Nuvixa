@@ -1,4 +1,4 @@
-import { CalendarClock, FileText, Calculator, Timer, Search, ShoppingCart, BarChart3, Link2, KeyRound, ScrollText, Lock, Braces, Contrast, LayoutGrid, FileImage, Building2, TrendingUp, PieChart, Car, Scale, Snowflake, Home, FileSignature, ShieldCheck, Database, ShieldHalf, Users, ServerCrash, Fingerprint, Tag, Video, Gauge, Handshake, Map, MailCheck } from "lucide-react";
+import { CalendarClock, FileText, Calculator, Timer, Search, ShoppingCart, BarChart3, Link2, KeyRound, ScrollText, Lock, Braces, Contrast, LayoutGrid, FileImage, Building2, TrendingUp, PieChart, Car, Scale, Snowflake, Home, FileSignature, ShieldCheck, Database, ShieldHalf, Users, ServerCrash, Fingerprint, Tag, Video, Gauge, Handshake, Map, MailCheck, Scissors, Terminal, DatabaseZap, RefreshCw, Ratio } from "lucide-react";
 
 import type { Tool } from "@/types/tool";
 
@@ -1593,6 +1593,209 @@ export const tools: Tool[] = [
         question: "Why does the \"ptr\" mechanism get flagged?",
         answer:
           "The \"ptr\" mechanism is explicitly discouraged in RFC 7208 itself due to its unreliability and the extra DNS load it creates — most modern SPF guidance recommends avoiding it entirely.",
+      },
+    ],
+  },
+  {
+    slug: "url-stripper",
+    name: "URL Parameter Stripper",
+    tagline: "Strip tracking params from any link, keep the ones that matter.",
+    description:
+      "Paste a cluttered affiliate, ad, or shared URL and this tool auto-detects known tracking parameters — UTM tags, fbclid, gclid, and more — so you can strip them out while keeping the core path and any parameters you actually need.",
+    category: "marketing",
+    icon: Scissors,
+    isNew: true,
+    keywords: [
+      "url stripper",
+      "remove utm parameters",
+      "clean tracking link",
+      "strip tracking url",
+      "remove fbclid",
+      "remove gclid",
+      "clean affiliate link",
+      "url parameter remover",
+    ],
+    howTo: [
+      "Paste any URL with query parameters into the input box.",
+      "Known tracking parameters (UTM tags, fbclid, gclid, and similar) are flagged and marked for removal automatically.",
+      "Toggle any parameter on or off if you want to keep or strip it manually.",
+      "Copy the cleaned link once it looks right.",
+    ],
+    faq: [
+      {
+        question: "Does this send my URL anywhere?",
+        answer:
+          "No — everything runs locally in your browser. The URL is never sent to a server, so it's safe to use on private or unpublished links.",
+      },
+      {
+        question: "How does it decide which parameters are tracking params?",
+        answer:
+          "It checks against a list of well-known tracking parameters used by ad platforms, email tools, and social apps — things like utm_source, fbclid, gclid, and msclkid — but you can override any suggestion with the toggle next to each parameter.",
+      },
+      {
+        question: "Will this break my link?",
+        answer:
+          "Stripping tracking parameters doesn't affect where a URL points to — those parameters are read by analytics scripts, not by routing. The page itself will load exactly the same.",
+      },
+    ],
+  },
+  {
+    slug: "curl-converter",
+    name: "cURL to Fetch / Axios / Python Converter",
+    tagline: "Turn a cURL command into ready-to-run fetch, Axios, or Python code.",
+    description:
+      "Paste a raw cURL command — copied from your terminal or a browser's \"Copy as cURL\" — and get it instantly converted into JavaScript fetch(), Axios, or Python requests code, with headers, body, and basic auth carried over.",
+    category: "developer",
+    icon: Terminal,
+    isNew: true,
+    keywords: [
+      "curl converter",
+      "curl to fetch",
+      "curl to axios",
+      "curl to python",
+      "curl to requests",
+      "convert curl command",
+      "curl command parser",
+    ],
+    howTo: [
+      "Paste a cURL command — from your terminal history or a browser's \"Copy as cURL\" option.",
+      "Choose the target: fetch, Axios, or Python requests.",
+      "Copy the generated code and drop it straight into your project.",
+    ],
+    faq: [
+      {
+        question: "Does this send my request anywhere?",
+        answer:
+          "No — the command is only parsed and converted locally in your browser. Nothing is sent over the network, so it's safe to paste commands containing real API keys or tokens.",
+      },
+      {
+        question: "What cURL flags are supported?",
+        answer:
+          "The common ones: -X/--request, -H/--header, -d/--data (and its variants), -u/--user for basic auth, -b/--cookie, -A/--user-agent, and -G/--get for converting data into query params. Less common flags are safely ignored rather than breaking the parse.",
+      },
+      {
+        question: "Why does the output include a Content-Type header I didn't specify?",
+        answer:
+          "When cURL sends a request body with -d and no explicit Content-Type, it defaults to application/x-www-form-urlencoded — this tool mirrors that same default so the generated code behaves identically to the original command.",
+      },
+    ],
+  },
+  {
+    slug: "sql-formatter",
+    name: "SQL Query Formatter",
+    tagline: "Turn messy, single-line SQL into clean, readable queries.",
+    description:
+      "Paste a cramped or single-line SQL query and get it reformatted into clean, multi-line SQL with uppercase keywords, one column per line, and clauses broken out — or collapse it back into a single line to paste into a config or log statement.",
+    category: "developer",
+    icon: DatabaseZap,
+    isNew: true,
+    keywords: [
+      "sql formatter",
+      "sql beautifier",
+      "format sql query",
+      "sql pretty print",
+      "sql minify",
+      "sql syntax formatter",
+    ],
+    howTo: [
+      "Paste any raw or single-line SQL query into the input box.",
+      "The formatted version — uppercase keywords, one item per line — appears instantly on the right.",
+      "Copy the formatted version, or the single-line version if you need to paste it somewhere compact.",
+    ],
+    faq: [
+      {
+        question: "Does this run or validate my query against a real database?",
+        answer:
+          "No — it only reformats the text of the query locally in your browser. It doesn't connect to any database, and it doesn't check whether the query is actually valid SQL for a specific database engine.",
+      },
+      {
+        question: "Does it handle string literals containing commas or SQL keywords?",
+        answer:
+          "Yes — text inside quotes is treated as a literal value and left untouched, so a value like 'Smith, John' or '%SELECT%' won't get split or re-cased by mistake.",
+      },
+      {
+        question: "Will it perfectly format deeply nested subqueries?",
+        answer:
+          "It formats the outer query's clauses cleanly, but content inside parentheses (subqueries, function calls) is kept on a single line rather than recursively reformatted — this keeps the tool predictable for everyday queries.",
+      },
+    ],
+  },
+  {
+    slug: "yaml-json-converter",
+    name: "YAML to JSON Converter",
+    tagline: "Convert configs between YAML and JSON, both directions, instantly.",
+    description:
+      "Paste YAML and get clean, indented JSON — or paste JSON and get readable YAML back. Handles nested mappings, sequences, inline flow collections, and common scalar types, all converted locally in your browser.",
+    category: "developer",
+    icon: RefreshCw,
+    isNew: true,
+    keywords: [
+      "yaml to json",
+      "json to yaml",
+      "yaml converter",
+      "yaml parser",
+      "convert yaml",
+      "config file converter",
+    ],
+    howTo: [
+      "Pick a direction: YAML to JSON, or JSON to YAML.",
+      "Paste your config in the left box.",
+      "Copy the converted result from the right box — it updates as you type.",
+    ],
+    faq: [
+      {
+        question: "Is my config sent anywhere?",
+        answer:
+          "No — parsing and conversion both happen locally in your browser. Nothing is uploaded, so it's safe to paste configs containing internal hostnames or credentials.",
+      },
+      {
+        question: "What YAML features are supported?",
+        answer:
+          "Nested mappings and sequences, sequences of mappings (the common \"- name: value\" list-of-objects pattern), inline flow collections like [a, b, c] and {a: 1, b: 2}, quoted and unquoted strings, numbers, booleans, and null. Anchors, aliases, and multi-document files aren't supported.",
+      },
+      {
+        question: "Why did my unquoted \"yes\" or \"no\" stay a string instead of becoming a boolean?",
+        answer:
+          "This tool follows the modern YAML 1.2 core schema, where only true/false are booleans — older YAML 1.1 tools also treated yes/no/on/off as booleans, which caused the infamous problem of country code \"NO\" (Norway) silently becoming false. Sticking to true/false avoids that trap.",
+      },
+    ],
+  },
+  {
+    slug: "aspect-ratio-calculator",
+    name: "CSS Aspect Ratio Calculator",
+    tagline: "Get the simplified ratio, decimal value, and ready-to-use CSS.",
+    description:
+      "Enter any width and height and get the simplified aspect ratio, its decimal value, the modern CSS aspect-ratio property, and the legacy padding-top percentage fallback for older browser support — all generated instantly.",
+    category: "developer",
+    icon: Ratio,
+    isNew: true,
+    keywords: [
+      "aspect ratio calculator",
+      "css aspect-ratio",
+      "padding-top hack",
+      "responsive image ratio",
+      "aspect ratio to percentage",
+    ],
+    howTo: [
+      "Enter a width and height in pixels, or pick a common ratio preset.",
+      "The simplified ratio, decimal ratio, and padding-top percentage are calculated instantly.",
+      "Copy the modern aspect-ratio CSS, or the legacy padding-top fallback for wider browser support.",
+    ],
+    faq: [
+      {
+        question: "When do I need the legacy padding-top fallback instead of aspect-ratio?",
+        answer:
+          "The CSS aspect-ratio property is supported in all current major browsers, but the padding-top percentage trick still shows up in older codebases and in projects that need to support very old browser versions — this tool gives you both so you can pick what fits your target support.",
+      },
+      {
+        question: "Why is the padding-top percentage based on width, not height?",
+        answer:
+          "Percentage padding in CSS is always calculated relative to the containing block's width, even padding-top — that's the quirk the classic \"padding-top hack\" exploits to reserve vertical space before an image or iframe loads.",
+      },
+      {
+        question: "Does this resize or crop my actual image?",
+        answer:
+          "No — this only calculates ratios and generates CSS. It doesn't process any image file; you'd pair the generated CSS with your own image using object-fit: cover, as shown in the legacy snippet.",
       },
     ],
   },
