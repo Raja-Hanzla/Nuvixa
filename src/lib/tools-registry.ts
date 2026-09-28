@@ -1,4 +1,4 @@
-import { CalendarClock, FileText, Calculator, Timer, Search, ShoppingCart, BarChart3, Link2, KeyRound, ScrollText, Lock, Braces, Contrast, LayoutGrid, FileImage, Building2, TrendingUp, PieChart, Car, Scale, Snowflake, Home, FileSignature, ShieldCheck, Database, ShieldHalf, Users, ServerCrash, Fingerprint, Tag, Video, Gauge, Handshake, Map, MailCheck, Scissors, Terminal, DatabaseZap, RefreshCw, Ratio } from "lucide-react";
+import { CalendarClock, FileText, Calculator, Timer, Search, ShoppingCart, BarChart3, Link2, KeyRound, ScrollText, Lock, Braces, Contrast, LayoutGrid, FileImage, Building2, TrendingUp, PieChart, Car, Scale, Snowflake, Home, FileSignature, ShieldCheck, Database, ShieldHalf, Users, ServerCrash, Fingerprint, Tag, Video, Gauge, Handshake, Map, MailCheck, Scissors, Terminal, DatabaseZap, RefreshCw, Ratio, GitBranch, Container, Regex, Diff, Podcast, FileSpreadsheet, Radio, CaseSensitive, FileDigit, ListTree } from "lucide-react";
 
 import type { Tool } from "@/types/tool";
 
@@ -1796,6 +1796,401 @@ export const tools: Tool[] = [
         question: "Does this resize or crop my actual image?",
         answer:
           "No — this only calculates ratios and generates CSS. It doesn't process any image file; you'd pair the generated CSS with your own image using object-fit: cover, as shown in the legacy snippet.",
+      },
+    ],
+  },
+  {
+    slug: "git-command-builder",
+    name: "Git Command Builder",
+    tagline: "Pick what you're trying to do — get the exact Git command.",
+    description:
+      "Stop guessing flag combinations. Pick a common scenario — undoing a commit, renaming a branch, squashing history, force-pushing safely — fill in the blanks, and get the exact Git command to run, copy-ready.",
+    category: "developer",
+    icon: GitBranch,
+    isNew: true,
+    keywords: [
+      "git command builder",
+      "git cheat sheet",
+      "git commands generator",
+      "undo git commit",
+      "git reset vs revert",
+      "force push with lease",
+    ],
+    howTo: [
+      "Pick the scenario closest to what you're trying to do, grouped by category on the left.",
+      "Fill in any blanks — branch names, commit hashes, file paths.",
+      "Copy the generated command and run it in your terminal.",
+    ],
+    faq: [
+      {
+        question: "Does this run any commands for me?",
+        answer:
+          "No — it only builds the command text locally in your browser. Nothing is executed; you copy the result and run it yourself in your own terminal.",
+      },
+      {
+        question: "What's the difference between git reset --hard and git revert?",
+        answer:
+          "git reset --hard rewrites history by removing commits entirely — risky on a branch others have already pulled. git revert adds a new commit that undoes an earlier one, leaving history intact, which is why it's the safer choice for shared branches.",
+      },
+      {
+        question: "Why use --force-with-lease instead of --force?",
+        answer:
+          "A plain --force push overwrites whatever is on the remote, even if a teammate pushed new commits since you last fetched. --force-with-lease refuses to push if the remote has moved unexpectedly, protecting you from silently overwriting someone else's work.",
+      },
+    ],
+  },
+  {
+    slug: "docker-compose-formatter",
+    name: "Docker Compose Formatter & Inspector",
+    tagline: "Catch deprecated syntax, bad indentation, and misconfigured services.",
+    description:
+      "Paste a docker-compose.yml file and get it checked for common problems — deprecated top-level version keys, tabs where YAML needs spaces, inconsistent indentation, services missing image or build, legacy links usage — plus a cleaned, re-indented copy of the file.",
+    category: "developer",
+    icon: Container,
+    isNew: true,
+    keywords: [
+      "docker compose formatter",
+      "docker compose validator",
+      "compose file linter",
+      "docker compose syntax checker",
+      "compose version deprecated",
+    ],
+    howTo: [
+      "Paste your docker-compose.yml contents into the input box.",
+      "Review the issues list — errors block Compose from running, warnings and info items are worth a look.",
+      "Copy the cleaned, consistently indented YAML from the output box.",
+    ],
+    faq: [
+      {
+        question: "Does this actually run Docker or validate against my installed Compose version?",
+        answer:
+          "No — everything happens locally in your browser by parsing the YAML structure. It doesn't run docker compose config or connect to Docker at all, so it won't catch things like an image that doesn't exist or a build context that's missing.",
+      },
+      {
+        question: "Why is the version key flagged as deprecated?",
+        answer:
+          "The Compose Specification that modern Docker Compose (v2) follows merged the old versioned schemas into one, and the top-level version field is now ignored — Compose infers the format automatically. Docker's own documentation recommends removing it from new files.",
+      },
+      {
+        question: "Why do tabs matter in a Compose file?",
+        answer:
+          "Compose files are YAML underneath, and the YAML spec disallows tab characters for indentation entirely — a file with a tab in its indentation will fail to parse rather than just looking slightly off.",
+      },
+    ],
+  },
+  {
+    slug: "regex-log-extractor",
+    name: "Regex Log Extractor",
+    tagline: "Turn raw log lines into a clean, exportable table.",
+    description:
+      "Paste server access logs or any line-based text, write a regex with named capture groups, and get a structured table back — one row per matching line, one column per group — ready to export as CSV or JSON.",
+    category: "developer",
+    icon: Regex,
+    isNew: true,
+    keywords: [
+      "regex log extractor",
+      "log parser",
+      "extract data from logs",
+      "regex to csv",
+      "named capture groups",
+      "server log parser",
+    ],
+    howTo: [
+      "Paste your log lines or raw text, one record per line.",
+      "Write a regular expression with named groups like (?<ip>\\S+) for each field you want as a column.",
+      "Review the extracted table, then copy it as CSV or JSON.",
+    ],
+    faq: [
+      {
+        question: "What happens to lines that don't match?",
+        answer:
+          "They're simply skipped and don't appear in the table — the match counter above the table shows how many of the total lines matched, so you can spot if your pattern is too narrow.",
+      },
+      {
+        question: "Do I have to use named groups?",
+        answer:
+          "No — if your pattern has plain capturing groups without names, columns are labeled group1, group2, and so on. If it has no capturing groups at all, the whole match is used as a single \"match\" column.",
+      },
+      {
+        question: "Is my log data uploaded anywhere?",
+        answer:
+          "No — matching and extraction both run locally in your browser using JavaScript's built-in regex engine. Nothing is sent to a server, which matters if your logs contain IPs, tokens, or other sensitive values.",
+      },
+    ],
+  },
+  {
+    slug: "text-diff-checker",
+    name: "Text Diff Checker",
+    tagline: "See exactly what changed between two blocks of text.",
+    description:
+      "Paste two versions of anything — a paragraph, a config file, a contract clause — and see the differences highlighted at the line, word, or character level, with an added/removed count for each.",
+    category: "developer",
+    icon: Diff,
+    isNew: true,
+    keywords: [
+      "text diff checker",
+      "compare two texts",
+      "diff tool",
+      "word diff",
+      "line diff",
+      "text comparison online",
+    ],
+    howTo: [
+      "Paste the original text on the left and the changed version on the right.",
+      "Pick a granularity — line, word, or character — depending on how fine-grained you need the comparison.",
+      "Additions and removals are highlighted instantly as you edit either side.",
+    ],
+    faq: [
+      {
+        question: "What's the difference between line, word, and character mode?",
+        answer:
+          "Line mode treats each line as a unit — if even one word changes, the whole line shows as removed and re-added. Word mode highlights just the changed words within otherwise identical text, and character mode goes finer still, down to individual letters.",
+      },
+      {
+        question: "Is there a size limit?",
+        answer:
+          "Very large pastes fall back to a simplified view rather than a detailed diff, since precise character-level comparison gets computationally expensive on huge inputs. Line and word mode comfortably handle much larger text than character mode.",
+      },
+      {
+        question: "Is my text uploaded anywhere?",
+        answer:
+          "No — the comparison runs entirely in your browser. Nothing you paste is sent to a server, which matters if you're comparing contract drafts or other sensitive text.",
+      },
+    ],
+  },
+  {
+    slug: "podcast-file-size-estimator",
+    name: "Podcast File Size & Bitrate Estimator",
+    tagline: "Know your export size before you hit render.",
+    description:
+      "Enter your episode's duration, channel layout, and export settings to estimate the final file size — for compressed MP3/AAC exports or uncompressed WAV masters — plus the bandwidth a batch of downloads would use.",
+    category: "utility",
+    icon: Podcast,
+    isNew: true,
+    keywords: [
+      "podcast file size calculator",
+      "audio bitrate calculator",
+      "mp3 file size estimator",
+      "podcast bandwidth calculator",
+      "mono vs stereo podcast",
+    ],
+    howTo: [
+      "Enter your episode's duration in hours, minutes, and seconds.",
+      "Choose mono or stereo, and your export format — MP3, AAC, or WAV.",
+      "Pick a bitrate (for MP3/AAC) or sample rate and bit depth (for WAV) to see the estimated file size.",
+    ],
+    faq: [
+      {
+        question: "Does channel layout change the file size for MP3 or AAC?",
+        answer:
+          "Not directly — a bitrate like 128 kbps already refers to the whole encoded stream, so mono and stereo files at the same bitrate come out the same size. What mono buys you is quality: at a given bitrate, a mono file gets the full bit budget for a single channel instead of splitting it across two, so spoken-word podcasts typically sound just as good at half the bitrate in mono.",
+      },
+      {
+        question: "Why is my WAV export so much bigger than my MP3?",
+        answer:
+          "WAV stores every sample uncompressed, so its size is driven by sample rate, bit depth, and channel count rather than a target bitrate — a 45-minute stereo WAV at 44.1kHz/16-bit can easily be 15-20x larger than the same episode exported as 96 kbps MP3.",
+      },
+      {
+        question: "Is this exact, down to the byte?",
+        answer:
+          "It's a close estimate based on the raw bitrate math — actual exported files vary slightly depending on your encoder, any variable bitrate settings, and embedded metadata like cover art or ID3 tags.",
+      },
+    ],
+  },
+  {
+    slug: "csv-duplicate-cleaner",
+    name: "CSV Duplicate Row Cleaner",
+    tagline: "Find and remove duplicate rows, based on whichever columns matter.",
+    description:
+      "Drop in a CSV file and choose which columns define a duplicate — a full-row match, or just a subset like name and email. See exactly which rows get removed, then download or copy the cleaned result.",
+    category: "business",
+    icon: FileSpreadsheet,
+    isNew: true,
+    keywords: [
+      "csv duplicate remover",
+      "remove duplicate rows csv",
+      "csv cleaner",
+      "dedupe csv",
+      "csv deduplication tool",
+    ],
+    howTo: [
+      "Drop a CSV file, or paste its contents directly into the text box.",
+      "Turn off any columns that shouldn't count toward a match — for example, a unique row ID.",
+      "Review the duplicate count, then download or copy the cleaned CSV.",
+    ],
+    faq: [
+      {
+        question: "Which row does it keep when there are duplicates?",
+        answer:
+          "The first occurrence of each unique combination is kept, and every row after it that matches on the selected columns is treated as a duplicate and removed.",
+      },
+      {
+        question: "Is my data uploaded anywhere?",
+        answer:
+          "No — parsing and deduplication both happen locally in your browser using JavaScript. Your file never leaves your device, which matters for customer lists or other sensitive data.",
+      },
+      {
+        question: "Does it handle fields with commas or quotes inside them?",
+        answer:
+          "Yes — it follows standard CSV quoting rules, so a field like \"Smith, John\" wrapped in quotes is parsed as a single value rather than being split at the comma.",
+      },
+    ],
+  },
+  {
+    slug: "stream-bitrate-matrix",
+    name: "Twitch & YouTube Stream Bitrate Matrix",
+    tagline: "The right OBS bitrate for your resolution, frame rate, and upload speed.",
+    description:
+      "Pick your streaming platform, target resolution, and frame rate, and get a recommended video and audio bitrate along with keyframe interval, rate control, and profile settings for OBS — checked against your actual tested upload speed.",
+    category: "marketing",
+    icon: Radio,
+    isNew: true,
+    keywords: [
+      "obs bitrate calculator",
+      "twitch bitrate settings",
+      "youtube live bitrate",
+      "streaming bitrate calculator",
+      "obs encoder settings",
+    ],
+    howTo: [
+      "Pick your platform (Twitch or YouTube), target resolution, and frame rate.",
+      "Enter your tested upload speed — run a speed test first, not just your plan's advertised speed.",
+      "Copy the recommended bitrate and encoder settings into OBS.",
+    ],
+    faq: [
+      {
+        question: "Why is Twitch's bitrate capped lower than YouTube's at the same resolution?",
+        answer:
+          "Twitch enforces a lower general bitrate ceiling than YouTube Live across most of its infrastructure, regardless of resolution, while YouTube's guidelines scale bitrate more steeply with resolution and frame rate. These limits can change over time, so it's worth checking each platform's current broadcaster documentation for the latest numbers.",
+      },
+      {
+        question: "Why leave headroom below my tested upload speed?",
+        answer:
+          "Home internet upload speed fluctuates — background uploads, other devices, and ISP variance can all eat into it mid-stream. Keeping your total stream bitrate around 80% of your tested upload speed gives the encoder room to work without dropped frames or a disconnect.",
+      },
+      {
+        question: "Should I use CBR or VBR for streaming?",
+        answer:
+          "CBR (constant bitrate) is what both Twitch and YouTube recommend for live streaming — it keeps your output bitrate steady and predictable, which streaming platforms and viewers' players both handle far more reliably than the variable bitrate typically used for recorded video.",
+      },
+    ],
+  },
+  {
+    slug: "case-converter",
+    name: "Case Converter & Slug Sanitizer",
+    tagline: "One title, every case format, instantly.",
+    description:
+      "Paste any title or phrase and get it converted into a clean URL slug, camelCase, PascalCase, snake_case, CONSTANT_CASE, Title Case, and Sentence case — all at once, each with its own copy button.",
+    category: "developer",
+    icon: CaseSensitive,
+    isNew: true,
+    keywords: [
+      "case converter",
+      "slug generator",
+      "camelcase converter",
+      "snake case converter",
+      "title case converter",
+      "url slug sanitizer",
+    ],
+    howTo: [
+      "Paste a title, heading, or phrase — any format works, including existing camelCase or snake_case text.",
+      "Every case format updates instantly below.",
+      "Copy whichever one you need with its dedicated copy button.",
+    ],
+    faq: [
+      {
+        question: "How does it split words from something like camelCase or an acronym?",
+        answer:
+          "It detects word boundaries at transitions between lowercase and uppercase letters, and treats a run of capitals followed by a capitalized word as an acronym — so \"XMLHttpRequest\" splits into \"XML\", \"Http\", \"Request\" rather than one long word.",
+      },
+      {
+        question: "What happens to accented characters?",
+        answer:
+          "They're converted to their closest plain-ASCII equivalent — \"café\" becomes \"cafe\" — since accented characters can cause issues in URLs, file names, and some programming contexts.",
+      },
+      {
+        question: "Is camelCase or PascalCase output always a valid variable name?",
+        answer:
+          "Not quite in every case — if your input starts with a number, the output will too (like \"10BestCoffeeShops\"), which isn't a valid JavaScript identifier. You'd want to prefix it with a letter or underscore before using it as a variable name.",
+      },
+    ],
+  },
+  {
+    slug: "pdf-metadata-extractor",
+    name: "PDF Page Count & Dimension Extractor",
+    tagline: "Drop a PDF, instantly see page count, size, and color space.",
+    description:
+      "Drop a multi-page PDF and get its page count, page dimensions in both points and inches, aspect ratio, orientation, and detected color spaces — extracted directly in your browser without uploading the file anywhere.",
+    category: "utility",
+    icon: FileDigit,
+    isNew: true,
+    keywords: [
+      "pdf page count",
+      "pdf dimensions",
+      "pdf metadata extractor",
+      "pdf page size checker",
+      "pdf color space",
+    ],
+    howTo: [
+      "Drop a PDF file onto the drop zone, or click to browse for one.",
+      "Page count, page size, and orientation appear instantly.",
+      "Check the color spaces list to see what's used inside the document.",
+    ],
+    faq: [
+      {
+        question: "Is my PDF uploaded anywhere?",
+        answer:
+          "No — the file is read and inspected entirely in your browser using JavaScript's File API. It's never sent to a server, which matters for confidential or unpublished documents.",
+      },
+      {
+        question: "Why does it say the results might be incomplete for some PDFs?",
+        answer:
+          "Newer PDFs can bundle multiple objects — including page definitions — into a single compressed \"object stream\" for a smaller file size. This tool reads a PDF's plain-text structure directly rather than running a full PDF decoder, so it flags this case explicitly instead of guessing at a number it can't fully verify.",
+      },
+      {
+        question: "Why do some pages share one size instead of being listed individually?",
+        answer:
+          "PDF allows a page size to be set once on a shared parent node and inherited by every page under it, rather than repeated on each page — very common for documents where every page is the same size, like a standard Letter or A4 report.",
+      },
+    ],
+  },
+  {
+    slug: "heading-hierarchy-auditor",
+    name: "HTML Heading Hierarchy Auditor",
+    tagline: "See your page's heading structure — and every skipped level.",
+    description:
+      "Paste raw HTML and get a visual tree of every H1–H6 tag in document order, with skipped heading levels, empty headings, and missing or duplicate H1s automatically flagged — the structural checks that matter most for accessibility and SEO.",
+    category: "developer",
+    icon: ListTree,
+    isNew: true,
+    keywords: [
+      "heading hierarchy checker",
+      "h1 h2 h3 audit",
+      "heading structure seo",
+      "skipped heading level",
+      "html heading tree",
+      "accessibility heading audit",
+    ],
+    howTo: [
+      "Paste a page's HTML source — view-source, a CMS export, or a component's markup all work.",
+      "Review the indented heading tree to see the structure at a glance.",
+      "Fix anything flagged below: skipped levels, empty headings, or a missing or duplicated H1.",
+    ],
+    faq: [
+      {
+        question: "Why does a skipped heading level matter?",
+        answer:
+          "Screen reader users often navigate a page heading-by-heading rather than reading it top to bottom, using the heading levels as a table of contents. Jumping from an H2 straight to an H4 breaks that structure and can make a section feel like it's missing context, even though it displays fine visually.",
+      },
+      {
+        question: "Is it ever okay to have more than one H1?",
+        answer:
+          "The HTML5 spec technically permits multiple H1s within separate sectioning elements, and it's flagged here only as an informational note, not an error. That said, most SEO guidance still recommends a single H1 that clearly states the page's main topic.",
+      },
+      {
+        question: "Does this check visual heading size (like large bold text)?",
+        answer:
+          "No — it only looks at actual H1–H6 tags in the HTML. Text that's styled to look like a heading with CSS but isn't wrapped in a heading tag won't show up, and semantically that's exactly the kind of thing worth fixing.",
       },
     ],
   },

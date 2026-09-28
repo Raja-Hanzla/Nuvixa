@@ -295,6 +295,7 @@ function needsQuoting(str: string): boolean {
   if (/^[-?:,[\]{}#&*!|>'"%@`]/.test(str)) return true;
   if (/^(true|false|null|~|yes|no|on|off)$/i.test(str)) return true;
   if (/^-?\d+(\.\d+)?([eE][+-]?\d+)?$/.test(str)) return true;
+  if (/^\d+(:\d+)+$/.test(str)) return true;
   if (/[\n\t]/.test(str)) return true;
   return false;
 }
