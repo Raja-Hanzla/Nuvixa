@@ -1,12 +1,14 @@
 "use client";
 
 import * as React from "react";
-import { Info, Gauge } from "lucide-react";
+import { Info, Gauge, RotateCcw } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { CopyButton } from "@/components/tools/copy-button";
 import {
   Select,
   SelectContent,
@@ -26,16 +28,42 @@ import {
 } from "@/lib/generators/quality-score";
 import { cn, formatCurrency } from "@/lib/utils";
 
+const DEFAULT_CPC = 3.5;
+
 export function QualityScoreEstimatorTool() {
   const [ratings, setRatings] = React.useState<ComponentRatings>(defaultRatings);
-  const [currentCpc, setCurrentCpc] = React.useState(3.5);
+  const [currentCpc, setCurrentCpc] = React.useState(DEFAULT_CPC);
 
   function update<K extends keyof ComponentRatings>(key: K, value: ComponentRatings[K]) {
     setRatings((prev) => ({ ...prev, [key]: value }));
   }
 
+  function updateCpc(raw: string) {
+    const parsed = Number(raw);
+    setCurrentCpc(Number.isFinite(parsed) ? Math.max(0, parsed) : 0);
+  }
+
+  function reset() {
+    setRatings(defaultRatings);
+    setCurrentCpc(DEFAULT_CPC);
+  }
+
   const qs = estimateQualityScore(ratings);
   const percentChange = cpcPercentChange(qs);
+
+  function summaryText(): string {
+    const lines = [
+      `Expected CTR: ${ratingLabels[ratings.expectedCtr]}`,
+      `Landing Page Experience: ${ratingLabels[ratings.landingPageExperience]}`,
+      `Ad Relevance: ${ratingLabels[ratings.adRelevance]}`,
+      `Estimated Quality Score: ${qs} / 10`,
+      `Estimated CPC impact vs. QS 5 average: ${percentChange >= 0 ? "+" : ""}${percentChange.toFixed(0)}%`,
+    ];
+    if (currentCpc > 0) {
+      lines.push(`Current CPC: ${formatCurrency(currentCpc, "USD")}`);
+    }
+    return lines.join("\n");
+  }
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -70,9 +98,14 @@ export function QualityScoreEstimatorTool() {
               min={0}
               step="0.01"
               value={currentCpc}
-              onChange={(e) => setCurrentCpc(Number(e.target.value))}
+              onChange={(e) => updateCpc(e.target.value)}
             />
           </div>
+
+          <Button variant="ghost" onClick={reset} className="text-muted-foreground">
+            <RotateCcw className="h-4 w-4" />
+            Reset to defaults
+          </Button>
         </CardContent>
       </Card>
 
@@ -101,6 +134,8 @@ export function QualityScoreEstimatorTool() {
               {percentChange >= 0 ? "+" : ""}
               {percentChange.toFixed(0)}% CPC
             </p>
+            <Separator className="my-4" />
+            <CopyButton getText={summaryText} label="Copy summary" successMessage="Summary copied" />
           </CardContent>
         </Card>
 

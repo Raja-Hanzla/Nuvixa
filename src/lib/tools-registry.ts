@@ -959,6 +959,11 @@ export const tools: Tool[] = [
         answer:
           "No — it assumes fixed rates for the full payoff period. If you have a variable-rate card or an intro APR that expires, treat this as a rough estimate rather than an exact timeline.",
       },
+      {
+        question: "Why does it say my debts won't be paid off within 50 years?",
+        answer:
+          "That means your minimum payments plus extra payment aren't covering the interest that's accruing fast enough for the balances to actually shrink — the debt could even grow. Increase your extra payment, or look into a lower-rate balance transfer or consolidation loan, to get a realistic payoff timeline.",
+      },
     ],
   },
   {

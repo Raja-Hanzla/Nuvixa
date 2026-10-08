@@ -1,12 +1,18 @@
 "use client";
 
 import * as React from "react";
-import { FileDigit, UploadCloud, AlertTriangle } from "lucide-react";
+import { toast } from "sonner";
+import { FileDigit, UploadCloud, AlertTriangle, X } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { CopyButton } from "@/components/tools/copy-button";
 import { inspectPdfBytes, type PdfInspection } from "@/lib/generators/pdf-metadata";
 import { cn } from "@/lib/utils";
+
+const MAX_FILE_SIZE_BYTES = 100 * 1024 * 1024; // 100 MB — large enough for virtually any real PDF,
+// small enough that the in-browser byte scan below stays responsive.
 
 function formatBytes(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
@@ -18,17 +24,43 @@ export function PdfMetadataExtractorTool() {
   const [fileName, setFileName] = React.useState<string | null>(null);
   const [result, setResult] = React.useState<PdfInspection | null>(null);
   const [isDragging, setIsDragging] = React.useState(false);
+  const [isReading, setIsReading] = React.useState(false);
+  const [readError, setReadError] = React.useState<string | null>(null);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   function loadFile(file: File) {
+    if (file.size > MAX_FILE_SIZE_BYTES) {
+      toast.error(`That file is ${formatBytes(file.size)} — files over ${formatBytes(MAX_FILE_SIZE_BYTES)} aren't supported here.`);
+      return;
+    }
+
+    setReadError(null);
+    setResult(null);
     setFileName(file.name);
+    setIsReading(true);
+
     const reader = new FileReader();
     reader.onload = () => {
+      setIsReading(false);
       if (reader.result instanceof ArrayBuffer) {
         setResult(inspectPdfBytes(new Uint8Array(reader.result)));
+      } else {
+        setReadError("Couldn't read this file's contents. Try a different file.");
       }
     };
+    reader.onerror = () => {
+      setIsReading(false);
+      setReadError("Couldn't read this file — it may be unreadable or no longer available.");
+    };
     reader.readAsArrayBuffer(file);
+  }
+
+  function clearFile() {
+    setFileName(null);
+    setResult(null);
+    setReadError(null);
+    setIsReading(false);
+    if (fileInputRef.current) fileInputRef.current.value = "";
   }
 
   function handleDrop(e: React.DragEvent<HTMLDivElement>) {
@@ -36,6 +68,27 @@ export function PdfMetadataExtractorTool() {
     setIsDragging(false);
     const file = e.dataTransfer.files?.[0];
     if (file) loadFile(file);
+  }
+
+  function metadataSummary(): string {
+    if (!result || !result.valid) return "";
+    const lines = [
+      `File: ${fileName ?? "—"}`,
+      `Size: ${formatBytes(result.fileSizeBytes)}`,
+      `Pages: ${result.pageCount}`,
+    ];
+    if (result.sizeGroups.length > 0) {
+      lines.push("Page sizes:");
+      for (const g of result.sizeGroups) {
+        lines.push(
+          `  ${g.widthIn.toFixed(2)}" x ${g.heightIn.toFixed(2)}" (${Math.round(g.widthPt)} x ${Math.round(g.heightPt)} pt, ${g.orientation}) - ${g.count} page${g.count === 1 ? "" : "s"}`
+        );
+      }
+    }
+    if (result.colorSpaces.length > 0) {
+      lines.push(`Color spaces: ${result.colorSpaces.join(", ")}`);
+    }
+    return lines.join("\n");
   }
 
   return (
@@ -62,6 +115,7 @@ export function PdfMetadataExtractorTool() {
             <UploadCloud className="h-7 w-7 text-muted-foreground" />
             <p className="text-sm text-muted-foreground">Drag a PDF file here, or click to browse</p>
             {fileName && <p className="mt-1 truncate text-xs font-medium text-foreground">{fileName}</p>}
+            <p className="text-[11px] text-muted-foreground">Up to {formatBytes(MAX_FILE_SIZE_BYTES)}</p>
             <input
               ref={fileInputRef}
               type="file"
@@ -73,6 +127,17 @@ export function PdfMetadataExtractorTool() {
               }}
             />
           </div>
+          {fileName && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={clearFile}
+              className="mt-3 text-muted-foreground"
+            >
+              <X className="h-3.5 w-3.5" />
+              Clear file
+            </Button>
+          )}
         </CardContent>
       </Card>
 
@@ -85,7 +150,16 @@ export function PdfMetadataExtractorTool() {
           <CardDescription>Page count, dimensions, and color space.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-          {!result ? (
+          {isReading ? (
+            <p className="rounded-lg border border-dashed border-border bg-secondary/30 px-4 py-10 text-center text-sm text-muted-foreground">
+              Reading {fileName}…
+            </p>
+          ) : readError ? (
+            <div className="flex items-start gap-2.5 rounded-lg border border-destructive/30 bg-destructive/5 p-3">
+              <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-destructive" />
+              <p className="text-sm text-destructive">{readError}</p>
+            </div>
+          ) : !result ? (
             <p className="rounded-lg border border-dashed border-border bg-secondary/30 px-4 py-10 text-center text-sm text-muted-foreground">
               Drop a PDF on the left to inspect it.
             </p>
@@ -160,6 +234,8 @@ export function PdfMetadataExtractorTool() {
                   </div>
                 </div>
               )}
+
+              <CopyButton getText={metadataSummary} label="Copy summary" successMessage="Metadata summary copied" />
             </>
           )}
         </CardContent>

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ArrowLeftRight, CheckCircle2, XCircle } from "lucide-react";
+import { ArrowLeftRight, CheckCircle2, XCircle, RotateCcw } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -9,6 +9,8 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { CopyButton } from "@/components/tools/copy-button";
 import {
   Select,
   SelectContent,
@@ -21,6 +23,7 @@ import {
   evaluateWcag,
   fontFamilyOptions,
   defaultCheckerState,
+  type WcagResult,
 } from "@/lib/generators/contrast-checker";
 import { cn } from "@/lib/utils";
 
@@ -40,6 +43,25 @@ export function WcagCheckerTool() {
     setBackgroundColor(textColor);
   }
 
+  function reset() {
+    setTextColor(defaultCheckerState.textColor);
+    setBackgroundColor(defaultCheckerState.backgroundColor);
+    setFontFamily(defaultCheckerState.fontFamily);
+    setFontSize(defaultCheckerState.fontSize);
+    setBold(defaultCheckerState.bold);
+  }
+
+  function resultSummary(r: WcagResult): string {
+    return [
+      `Text color: ${textColor}`,
+      `Background color: ${backgroundColor}`,
+      `Contrast ratio: ${r.ratio.toFixed(2)}:1`,
+      `Text size: ${fontSize}px${bold ? " bold" : ""} (evaluated as ${r.large ? "large" : "normal"} text)`,
+      `WCAG AA (needs ${r.aaThreshold}:1): ${r.passesAA ? "Pass" : "Fail"}`,
+      `WCAG AAA (needs ${r.aaaThreshold}:1): ${r.passesAAA ? "Pass" : "Fail"}`,
+    ].join("\n");
+  }
+
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
       <Card>
@@ -53,10 +75,16 @@ export function WcagCheckerTool() {
             <ColorField label="Background color" value={backgroundColor} onChange={setBackgroundColor} />
           </div>
 
-          <Button variant="ghost" size="sm" onClick={swapColors} className="text-muted-foreground">
-            <ArrowLeftRight className="h-3.5 w-3.5" />
-            Swap colors
-          </Button>
+          <div className="flex flex-wrap gap-2">
+            <Button variant="ghost" size="sm" onClick={swapColors} className="text-muted-foreground">
+              <ArrowLeftRight className="h-3.5 w-3.5" />
+              Swap colors
+            </Button>
+            <Button variant="ghost" size="sm" onClick={reset} className="text-muted-foreground">
+              <RotateCcw className="h-3.5 w-3.5" />
+              Reset
+            </Button>
+          </div>
 
           <div className="space-y-1.5">
             <Label htmlFor="wcag-font">Font family</Label>
@@ -154,6 +182,9 @@ export function WcagCheckerTool() {
                     ? "Large text (24px+, or 18.66px+ bold) needs 3:1 for AA and 4.5:1 for AAA."
                     : "Normal text needs 4.5:1 for AA and 7:1 for AAA."}
                 </p>
+
+                <Separator className="my-4" />
+                <CopyButton getText={() => resultSummary(result)} label="Copy result" successMessage="Result copied" />
               </>
             )}
           </CardContent>

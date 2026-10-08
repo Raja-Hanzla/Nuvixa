@@ -1,11 +1,14 @@
 "use client";
 
 import * as React from "react";
-import { Radio, CheckCircle2, AlertTriangle } from "lucide-react";
+import { Radio, CheckCircle2, AlertTriangle, RotateCcw } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { CopyButton } from "@/components/tools/copy-button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import {
@@ -13,16 +16,40 @@ import {
   resolutionOptions,
   type Platform,
   type FrameRate,
+  type BitrateMatrixResult,
 } from "@/lib/generators/stream-bitrate-matrix";
 import { cn } from "@/lib/utils";
 
+const DEFAULTS = { platform: "twitch" as Platform, resolutionId: "1080p", fps: 60 as FrameRate, uploadMbps: "35" };
+
 export function StreamBitrateMatrixTool() {
-  const [platform, setPlatform] = React.useState<Platform>("twitch");
-  const [resolutionId, setResolutionId] = React.useState("1080p");
-  const [fps, setFps] = React.useState<FrameRate>(60);
-  const [uploadMbps, setUploadMbps] = React.useState("35");
+  const [platform, setPlatform] = React.useState<Platform>(DEFAULTS.platform);
+  const [resolutionId, setResolutionId] = React.useState(DEFAULTS.resolutionId);
+  const [fps, setFps] = React.useState<FrameRate>(DEFAULTS.fps);
+  const [uploadMbps, setUploadMbps] = React.useState(DEFAULTS.uploadMbps);
 
   const result = getBitrateRecommendation(platform, resolutionId, fps, Number(uploadMbps) || 0);
+
+  function reset() {
+    setPlatform(DEFAULTS.platform);
+    setResolutionId(DEFAULTS.resolutionId);
+    setFps(DEFAULTS.fps);
+    setUploadMbps(DEFAULTS.uploadMbps);
+  }
+
+  function settingsSummary(r: BitrateMatrixResult): string {
+    return [
+      `Platform: ${platform === "twitch" ? "Twitch" : "YouTube"}`,
+      `Resolution: ${resolutionId} @ ${fps}fps`,
+      `Video bitrate: ${r.videoKbps} kbps`,
+      `Audio bitrate: ${r.audioKbps} kbps`,
+      `Total bitrate: ${r.totalKbps} kbps`,
+      `Rate control: ${r.rateControl}`,
+      `Keyframe interval: ${r.keyframeIntervalSeconds}s`,
+      `Profile: ${r.profile}`,
+      `Preset: ${r.recommendedPreset}`,
+    ].join("\n");
+  }
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -81,6 +108,11 @@ export function StreamBitrateMatrixTool() {
               Run a speed test while nothing else is uploading — this is your ceiling, not your download speed.
             </p>
           </div>
+
+          <Button variant="ghost" onClick={reset} className="text-muted-foreground">
+            <RotateCcw className="h-4 w-4" />
+            Reset to defaults
+          </Button>
         </CardContent>
       </Card>
 
@@ -152,6 +184,13 @@ export function StreamBitrateMatrixTool() {
                   <dd className="font-medium text-foreground">{result.recommendedPreset}</dd>
                 </div>
               </dl>
+
+              <Separator />
+              <CopyButton
+                getText={() => settingsSummary(result)}
+                label="Copy settings"
+                successMessage="Settings copied"
+              />
             </div>
           )}
         </CardContent>

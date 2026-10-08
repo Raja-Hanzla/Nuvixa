@@ -1,18 +1,24 @@
 "use client";
 
 import * as React from "react";
-import { UploadCloud, Info } from "lucide-react";
+import { toast } from "sonner";
+import { UploadCloud, Info, RotateCcw } from "lucide-react";
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { CopyButton } from "@/components/tools/copy-button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { safeZones, combinedSafeZone, platformOrder, type Platform } from "@/lib/generators/safe-zone";
 import { cn } from "@/lib/utils";
 
 type Mode = Platform | "combined";
 
+const DEFAULT_MODE: Mode = "tiktok";
+const MAX_IMAGE_SIZE_BYTES = 20 * 1024 * 1024; // 20 MB — generous for a still frame or cover image.
+
 export function SafeZoneVisualizerTool() {
-  const [mode, setMode] = React.useState<Mode>("tiktok");
+  const [mode, setMode] = React.useState<Mode>(DEFAULT_MODE);
   const [imageUrl, setImageUrl] = React.useState<string | null>(null);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
@@ -20,11 +26,39 @@ export function SafeZoneVisualizerTool() {
   const detail = mode !== "combined" ? safeZones[mode] : null;
 
   function handleFile(file: File) {
+    if (!file.type.startsWith("image/")) {
+      toast.error("That doesn't look like an image file. Try a JPG, PNG, or WebP.");
+      return;
+    }
+    if (file.size > MAX_IMAGE_SIZE_BYTES) {
+      toast.error(`That image is too large. Try a file under ${Math.round(MAX_IMAGE_SIZE_BYTES / (1024 * 1024))} MB.`);
+      return;
+    }
     const reader = new FileReader();
     reader.onload = () => {
       if (typeof reader.result === "string") setImageUrl(reader.result);
     };
+    reader.onerror = () => {
+      toast.error("Couldn't read that image — try a different file.");
+    };
     reader.readAsDataURL(file);
+  }
+
+  function reset() {
+    setMode(DEFAULT_MODE);
+    setImageUrl(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  }
+
+  function zoneSummary(): string {
+    const label = mode === "combined" ? "All platforms (combined)" : safeZones[mode].label;
+    return [
+      `Safe zone: ${label}`,
+      `Top blocked: ${zone.top}%`,
+      `Bottom blocked: ${zone.bottom}%`,
+      `Left blocked: ${zone.left}%`,
+      `Right blocked: ${zone.right}%`,
+    ].join("\n");
   }
 
   return (
@@ -89,6 +123,16 @@ export function SafeZoneVisualizerTool() {
                 useful when repurposing one video everywhere.
               </p>
             )}
+
+            <Separator />
+
+            <div className="flex flex-wrap gap-2">
+              <CopyButton getText={zoneSummary} label="Copy zone sizes" successMessage="Safe zone sizes copied" />
+              <Button variant="ghost" onClick={reset} className="text-muted-foreground">
+                <RotateCcw className="h-4 w-4" />
+                Reset
+              </Button>
+            </div>
           </CardContent>
         </Card>
       </div>
